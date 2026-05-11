@@ -7,8 +7,8 @@
 import { unsplashUrl } from './unsplash';
 
 export const unsplashPhotos = {
-  /** Hero landing: warm wood, soft light — reads as sanctuary without clinical stock */
-  landingHeroAtmosphere: '1758632031161-b6d7e913c2b9',
+  /** Hero landing: hands-on therapeutic massage (not spa / sauna imagery) */
+  landingHeroAtmosphere: '1745327883508-b6cd32e5dde5',
 
   /** Classic therapeutic massage table session */
   massageTherapy: '1571019614242-c5c5dee9f50b',
