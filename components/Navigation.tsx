@@ -12,6 +12,7 @@ export function Navigation() {
     { label: 'Therapeutic Massage', href: '/massage' },
     { label: 'What to Expect', href: '/what-to-expect' },
     { label: 'FAQ', href: '/faq' },
+    { label: 'Resources', href: '/resources' },
     { label: 'Contact', href: '/contact' },
   ];
 
