@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Typography, Button } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { content } from '@/lib/content';
 
@@ -53,6 +53,26 @@ export function Footer() {
             <Typography variant="body2" sx={{ marginTop: 1 }}>
               By appointment
             </Typography>
+            <Button
+              variant="outlined"
+              href="/booking/service"
+              size="small"
+              sx={{
+                borderColor: brandColors.gold,
+                color: brandColors.gold,
+                textTransform: 'none',
+                borderRadius: '999px',
+                marginTop: 1.5,
+                fontSize: '0.8rem',
+                '&:hover': {
+                  backgroundColor: brandColors.gold,
+                  color: brandColors.ink,
+                  borderColor: brandColors.gold,
+                },
+              }}
+            >
+              Book Online
+            </Button>
           </Box>
         </Box>
         <Box

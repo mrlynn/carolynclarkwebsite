@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Typography, Button } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
@@ -283,6 +283,63 @@ export default function MassagePage() {
                 Therapeutic massage supports anyone seeking relief from muscle tension, stress, or physical discomfort. Whether you're recovering from activity, managing chronic tension, or simply prioritizing relaxation and self-care, therapeutic massage can be an important part of your wellness routine.
               </Typography>
             </Box>
+          </ScrollReveal>
+        </Container>
+      </Box>
+
+      {/* CTA */}
+      <Box
+        sx={{
+          backgroundColor: brandColors.ink,
+          color: brandColors.cream,
+          padding: { xs: '3rem 2rem', md: '4rem 2rem' },
+          textAlign: 'center',
+        }}
+      >
+        <Container maxWidth="md">
+          <ScrollReveal>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: '1.75rem', md: '2.5rem' },
+                fontWeight: 400,
+                marginBottom: 2,
+                color: brandColors.gold,
+              }}
+            >
+              Ready to feel the difference?
+            </Typography>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: '1.1rem',
+                marginBottom: 3,
+              }}
+            >
+              Book a therapeutic massage session tailored to your needs.
+            </Typography>
+            <Button
+              variant="contained"
+              href="/booking/service"
+              sx={{
+                backgroundColor: brandColors.terracotta,
+                color: brandColors.cream,
+                padding: '16px 40px',
+                fontSize: '1rem',
+                fontWeight: 600,
+                textTransform: 'none',
+                borderRadius: '999px',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  backgroundColor: brandColors.terracottaDeep,
+                  transform: 'translateY(-2px)',
+                },
+              }}
+            >
+              Book Now
+            </Button>
           </ScrollReveal>
         </Container>
       </Box>

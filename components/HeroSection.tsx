@@ -73,6 +73,7 @@ export function HeroSection() {
             <Button
               variant="contained"
               size="large"
+              href="/booking/service"
               sx={{
                 backgroundColor: brandColors.terracotta,
                 color: brandColors.cream,
@@ -90,7 +91,7 @@ export function HeroSection() {
                 },
               }}
             >
-              Call to schedule
+              Book a Session
             </Button>
 
             <motion.div

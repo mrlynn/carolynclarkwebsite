@@ -329,7 +329,7 @@ export default function Home() {
             <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Button
                 variant="contained"
-                href={`tel:${content.booking.phone}`}
+                href="/booking/service"
                 sx={{
                   backgroundColor: brandColors.terracotta,
                   color: brandColors.cream,
@@ -345,11 +345,11 @@ export default function Home() {
                   },
                 }}
               >
-                Call {content.booking.phone}
+                Book Now
               </Button>
               <Button
                 variant="outlined"
-                href={`mailto:${content.booking.email}`}
+                href="/contact"
                 sx={{
                   borderColor: brandColors.gold,
                   color: brandColors.gold,
@@ -366,7 +366,7 @@ export default function Home() {
                   },
                 }}
               >
-                Send Email
+                Contact Me
               </Button>
             </Box>
           </ScrollReveal>

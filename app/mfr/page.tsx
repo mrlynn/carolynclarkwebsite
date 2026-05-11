@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Typography, Button } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
@@ -436,11 +436,31 @@ export default function MFRPage() {
               variant="body1"
               sx={{
                 fontSize: '1.1rem',
-                marginBottom: 2,
+                marginBottom: 3,
               }}
             >
-              Call today to schedule your first session and begin your healing journey.
+              Schedule your first session and begin your healing journey.
             </Typography>
+            <Button
+              variant="contained"
+              href="/booking/service"
+              sx={{
+                backgroundColor: brandColors.terracotta,
+                color: brandColors.cream,
+                padding: '16px 40px',
+                fontSize: '1rem',
+                fontWeight: 600,
+                textTransform: 'none',
+                borderRadius: '999px',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  backgroundColor: brandColors.terracottaDeep,
+                  transform: 'translateY(-2px)',
+                },
+              }}
+            >
+              Book Now
+            </Button>
           </ScrollReveal>
         </Container>
       </Box>

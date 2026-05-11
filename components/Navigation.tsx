@@ -103,7 +103,7 @@ export function Navigation() {
           {/* CTA Button */}
           <Button
             variant="contained"
-            href="tel:+1-610-555-1234"
+            href="/booking/service"
             sx={{
               backgroundColor: brandColors.terracotta,
               color: brandColors.cream,
@@ -119,7 +119,7 @@ export function Navigation() {
               },
             }}
           >
-            Call Now
+            Book Now
           </Button>
         </Box>
       </Container>

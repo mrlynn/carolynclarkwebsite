@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Typography, Button } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
@@ -793,8 +793,28 @@ export default function WhatToExpectPage() {
                   marginBottom: 3,
                 }}
               >
-                Contact me to schedule. I'm here to answer any questions you have.
+                I&apos;m here to answer any questions you have.
               </Typography>
+              <Button
+                variant="contained"
+                href="/booking/service"
+                sx={{
+                  backgroundColor: brandColors.terracotta,
+                  color: brandColors.cream,
+                  padding: '16px 40px',
+                  fontSize: '1rem',
+                  fontWeight: 600,
+                  textTransform: 'none',
+                  borderRadius: '999px',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    backgroundColor: brandColors.terracottaDeep,
+                    transform: 'translateY(-2px)',
+                  },
+                }}
+              >
+                Book Your First Session
+              </Button>
             </Box>
           </ScrollReveal>
         </Container>
