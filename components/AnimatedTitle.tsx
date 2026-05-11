@@ -24,9 +24,9 @@ export function AnimatedTitle({
       variant={variant}
       component="span"
       sx={{
-        fontSize: variant === 'h1' ? { xs: '2.5rem', md: '4rem' } : undefined,
+        fontSize: variant === 'h1' ? { xs: '1.875rem', sm: '2.25rem', md: '4rem' } : undefined,
         fontWeight: 400,
-        lineHeight: 1.1,
+        lineHeight: 1.2,
         color: brandColors.ink,
         display: 'inline-block',
       }}
