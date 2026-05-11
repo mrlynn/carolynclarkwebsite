@@ -63,6 +63,28 @@ export default function AdminDashboard() {
             </Button>
           </CardContent>
         </Card>
+
+        <Card sx={{ height: '100%' }}>
+          <CardContent>
+            <Typography variant="h6" sx={{ marginBottom: 2, color: brandColors.ink }}>
+              📣 Testimonials
+            </Typography>
+            <Typography variant="body2" sx={{ marginBottom: 3, color: brandColors.inkSoft }}>
+              Review and manage client testimonials and feedback.
+            </Typography>
+            <Button
+              variant="contained"
+              onClick={() => router.push('/admin/testimonials')}
+              sx={{
+                backgroundColor: brandColors.gold,
+                color: brandColors.ink,
+                textTransform: 'none',
+              }}
+            >
+              Manage Testimonials
+            </Button>
+          </CardContent>
+        </Card>
       </Box>
 
       <Box sx={{ marginTop: 4, padding: 2, backgroundColor: `${brandColors.terracotta}10`, borderRadius: 1 }}>

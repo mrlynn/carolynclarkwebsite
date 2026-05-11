@@ -288,6 +288,74 @@ export default function Home() {
         description="Step into a space designed for healing, comfort, and transformation. Every detail supports your journey toward lasting wellness."
       />
 
+      {/* Testimonials Section */}
+      <Box
+        sx={{
+          backgroundColor: brandColors.cream,
+          padding: { xs: '4rem 2rem', md: '6rem 2rem' },
+          borderTop: `1px solid ${brandColors.terracotta}40`,
+        }}
+      >
+        <Container maxWidth="lg">
+          <ScrollReveal>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: '2rem', md: '2.5rem' },
+                fontWeight: 400,
+                marginBottom: 2,
+                textAlign: 'center',
+                color: brandColors.ink,
+              }}
+            >
+              What Our Clients Say
+            </Typography>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: '1.1rem',
+                lineHeight: 1.8,
+                color: brandColors.inkSoft,
+                marginBottom: 4,
+                textAlign: 'center',
+                maxWidth: '600px',
+                mx: 'auto',
+              }}
+            >
+              Hear from people who've experienced the healing power of Myofascial Release and therapeutic massage.
+            </Typography>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2}>
+            <Box sx={{ textAlign: 'center' }}>
+              <Button
+                variant="contained"
+                href="/testimonials"
+                sx={{
+                  backgroundColor: brandColors.terracotta,
+                  color: brandColors.cream,
+                  padding: '14px 32px',
+                  fontSize: '1rem',
+                  fontWeight: 600,
+                  textTransform: 'none',
+                  borderRadius: '999px',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    backgroundColor: brandColors.terracottaDeep,
+                    transform: 'translateY(-2px)',
+                  },
+                }}
+              >
+                Read Client Stories
+              </Button>
+            </Box>
+          </ScrollReveal>
+        </Container>
+      </Box>
+
       {/* CTA Section */}
       <Box
         sx={{

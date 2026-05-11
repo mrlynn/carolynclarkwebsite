@@ -264,3 +264,67 @@ export function getAdminNotificationTemplate(data: AdminNotificationData): strin
 </html>
   `;
 }
+
+interface ReviewRequestEmailData {
+  clientName: string;
+  serviceName: string;
+  appointmentDate: Date;
+  testimonialLink: string;
+  googleReviewLink: string;
+}
+
+export function getReviewRequestEmailTemplate(data: ReviewRequestEmailData): string {
+  const dateFormatted = data.appointmentDate.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #E8A87C; color: white; padding: 20px; border-radius: 8px 8px 0 0; text-align: center; }
+    .header h1 { margin: 0; font-size: 24px; }
+    .content { background: #F5F0EC; padding: 20px; border-radius: 0 0 8px 8px; }
+    .cta-button { display: inline-block; background: #7B9B6E; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; margin: 15px 10px 15px 0; }
+    .cta-secondary { display: inline-block; background: #E8A87C; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; margin: 15px 10px 15px 0; }
+    .footer { font-size: 12px; color: #999; margin-top: 20px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Help Others Discover Healing</h1>
+    </div>
+    <div class="content">
+      <p>Hi ${data.clientName},</p>
+
+      <p>We hope you've been enjoying the benefits of your ${data.serviceName} session on <strong>${dateFormatted}</strong>. Your experience and feedback matter to us, and your story could inspire someone who's been searching for relief.</p>
+
+      <p>Would you take a moment to share your experience? Your review helps others find the healing they're looking for.</p>
+
+      <div style="text-align: center; margin: 30px 0;">
+        <a href="${data.testimonialLink}" class="cta-button">Share Your Story on Our Site</a>
+        <a href="${data.googleReviewLink}" class="cta-secondary">Leave a Review on Google</a>
+      </div>
+
+      <p>Whether you choose to share on our website or Google, we're grateful for your feedback and trust.</p>
+
+      <p>If you have any questions or concerns about your experience, please don't hesitate to reach out.</p>
+
+      <p>With gratitude,<br><strong>Carolyn Clark</strong></p>
+
+      <div class="footer">
+        <p>This is an automated message. Please do not reply to this email.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth';
 import { connectToDatabase } from '@/lib/db';
+import { sendEmail } from '@/lib/email-service';
+import { getReviewRequestEmailTemplate } from '@/lib/email-templates';
 import { ObjectId } from 'mongodb';
 
 export async function GET(
@@ -91,6 +93,15 @@ export async function PATCH(
 
     updateData.updated_at = new Date();
 
+    // Get the appointment before updating to check current status
+    const appointment = await db.collection('appointments').findOne({
+      _id: new ObjectId(appointmentId),
+    });
+
+    if (!appointment) {
+      return NextResponse.json({ error: 'Appointment not found' }, { status: 404 });
+    }
+
     const result = await db.collection('appointments').updateOne(
       { _id: new ObjectId(appointmentId) },
       { $set: updateData }
@@ -98,6 +109,44 @@ export async function PATCH(
 
     if (result.matchedCount === 0) {
       return NextResponse.json({ error: 'Appointment not found' }, { status: 404 });
+    }
+
+    // Send review request email if status changes to completed and review hasn't been requested
+    if (body.status === 'completed' && !appointment.review_requested) {
+      const service = await db.collection('services').findOne({
+        _id: appointment.service_id,
+      });
+
+      const serviceName = service?.name || 'Your Service';
+
+      // Send review request email
+      const emailTemplate = getReviewRequestEmailTemplate({
+        clientName: appointment.client_name,
+        serviceName,
+        appointmentDate: appointment.scheduled_at,
+        testimonialLink: `${process.env.SITE_URL || 'https://carolynclarkmfr.com'}/testimonials`,
+        googleReviewLink: 'https://www.google.com/maps', // Should be updated with actual Google Business profile URL
+      });
+
+      const adminEmail = process.env.ADMIN_EMAIL || process.env.SMTP_USER;
+      if (adminEmail) {
+        await sendEmail({
+          to: appointment.client_email,
+          subject: 'Help Others Discover Healing - Share Your Experience',
+          html: emailTemplate,
+        });
+
+        // Mark that review request has been sent
+        await db.collection('appointments').updateOne(
+          { _id: new ObjectId(appointmentId) },
+          {
+            $set: {
+              review_requested: true,
+              review_request_sent_at: new Date(),
+            },
+          }
+        );
+      }
     }
 
     return NextResponse.json({ success: true });

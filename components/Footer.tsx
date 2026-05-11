@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Box, Container, Typography, Button } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { content } from '@/lib/content';
@@ -17,7 +18,7 @@ export function Footer() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+            gridTemplateColumns: { xs: '1fr', md: 'repeat(4, 1fr)' },
             gap: 4,
             marginBottom: 4,
           }}
@@ -73,6 +74,23 @@ export function Footer() {
             >
               Book Online
             </Button>
+          </Box>
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 600, marginBottom: 1 }}>
+              Legal
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+              <Link href="/terms" style={{ color: brandColors.cream, textDecoration: 'none' }}>
+                <Typography variant="body2" sx={{ '&:hover': { color: brandColors.gold } }}>
+                  Terms of Service
+                </Typography>
+              </Link>
+              <Link href="/privacy" style={{ color: brandColors.cream, textDecoration: 'none' }}>
+                <Typography variant="body2" sx={{ '&:hover': { color: brandColors.gold } }}>
+                  Privacy Policy
+                </Typography>
+              </Link>
+            </Box>
           </Box>
         </Box>
         <Box

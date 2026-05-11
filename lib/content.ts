@@ -2,7 +2,7 @@ export const content = {
   business: {
     name: 'Carolyn Clark',
     tagline: 'Myofascial Release & Therapeutic Massage',
-    phone: '+1-610-555-1234',
+    phone: '+1 (484) 941-2718',
     email: 'carolyn@example.com',
     location: 'Kimberton / Phoenixville, PA',
   },
@@ -59,7 +59,7 @@ Sessions may also include education, self-treatment techniques, and home care re
   booking: {
     heading: 'Ready to begin your healing journey?',
     subheading: 'Contact me to schedule an appointment.',
-    phone: '+1-610-555-1234',
+    phone: '+1 (484) 941-2718',
     email: 'carolyn@example.com',
     hours: 'By appointment',
     note: 'Schedule is in transition. Call or text for current availability.',

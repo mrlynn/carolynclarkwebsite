@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "tsx scripts/seed-db.ts",
+    "seed:testimonials": "tsx scripts/seed-testimonials.ts",
     "send-reminders": "tsx scripts/send-reminders.ts"
   },
   "keywords": [

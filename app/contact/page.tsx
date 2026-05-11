@@ -205,7 +205,7 @@ export default function ContactPage() {
                   </Typography>
                   <Typography
                     component="a"
-                    href="tel:+1-610-555-1234"
+                    href="tel:+1 (484) 941-2718"
                     sx={{
                       fontSize: '1.2rem',
                       color: brandColors.ink,
@@ -216,7 +216,7 @@ export default function ContactPage() {
                       },
                     }}
                   >
-                    +1 (610) 555-1234
+                    +1 (484) 941-2718
                   </Typography>
                 </Box>
 
