@@ -9,7 +9,7 @@ type EmailType = 'confirmation' | 'reminder';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getSession();
@@ -18,7 +18,7 @@ export async function POST(
     }
 
     const { db } = await connectToDatabase();
-    const appointmentId = params.id;
+    const { id: appointmentId } = await params;
     const body = await request.json();
     const emailType: EmailType = body.emailType || 'confirmation';
 

@@ -5,7 +5,7 @@ import { ObjectId } from 'mongodb';
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getSession();
@@ -14,7 +14,7 @@ export async function GET(
     }
 
     const { db } = await connectToDatabase();
-    const appointmentId = params.id;
+    const { id: appointmentId } = await params;
 
     if (!ObjectId.isValid(appointmentId)) {
       return NextResponse.json({ error: 'Invalid appointment ID' }, { status: 400 });
@@ -59,7 +59,7 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getSession();
@@ -68,7 +68,7 @@ export async function PATCH(
     }
 
     const { db } = await connectToDatabase();
-    const appointmentId = params.id;
+    const { id: appointmentId } = await params;
     const body = await request.json();
 
     if (!ObjectId.isValid(appointmentId)) {
@@ -109,7 +109,7 @@ export async function PATCH(
 
 export async function DELETE(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getSession();
@@ -118,7 +118,7 @@ export async function DELETE(
     }
 
     const { db } = await connectToDatabase();
-    const appointmentId = params.id;
+    const { id: appointmentId } = await params;
 
     if (!ObjectId.isValid(appointmentId)) {
       return NextResponse.json({ error: 'Invalid appointment ID' }, { status: 400 });

@@ -14,7 +14,7 @@ const UpdateRuleSchema = z.object({
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getSession();
@@ -22,6 +22,7 @@ export async function PATCH(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const { id: ruleId } = await params;
     const body = await request.json();
     const parsed = UpdateRuleSchema.safeParse(body);
 
@@ -34,7 +35,7 @@ export async function PATCH(
 
     const { db } = await connectToDatabase();
     const result = await db.collection('availability_rules').findOneAndUpdate(
-      { _id: new ObjectId(params.id) },
+      { _id: new ObjectId(ruleId) },
       { $set: { ...parsed.data, updated_at: new Date() } },
       { returnDocument: 'after' }
     );
@@ -52,7 +53,7 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getSession();
@@ -60,9 +61,10 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const { id: ruleId } = await params;
     const { db } = await connectToDatabase();
     const result = await db.collection('availability_rules').deleteOne({
-      _id: new ObjectId(params.id),
+      _id: new ObjectId(ruleId),
     });
 
     if (result.deletedCount === 0) {

@@ -5,11 +5,11 @@ import { sendEmail } from '@/lib/email-service';
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { cancelToken: string } }
+  { params }: { params: Promise<{ cancelToken: string }> }
 ) {
   try {
+    const { cancelToken } = await params;
     const { db } = await connectToDatabase();
-    const { cancelToken } = params;
 
     // Find appointment by cancel token
     const appointment = await db.collection('appointments').findOne({
@@ -46,11 +46,11 @@ export async function GET(
 
 export async function DELETE(
   _request: NextRequest,
-  { params }: { params: { cancelToken: string } }
+  { params }: { params: Promise<{ cancelToken: string }> }
 ) {
   try {
+    const { cancelToken } = await params;
     const { db } = await connectToDatabase();
-    const { cancelToken } = params;
 
     // Find appointment by cancel token
     const appointment = await db.collection('appointments').findOne({
