@@ -40,11 +40,11 @@ export async function PATCH(
       { returnDocument: 'after' }
     );
 
-    if (!result.value) {
+    if (!result) {
       return NextResponse.json({ error: 'Rule not found' }, { status: 404 });
     }
 
-    return NextResponse.json(result.value);
+    return NextResponse.json(result);
   } catch (error) {
     console.error('Error updating rule:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
