@@ -4,12 +4,11 @@ import { Box, Container, Typography, Button } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
-import { FeaturedImage } from '@/components/FeaturedImage';
+import { GradientBackground } from '@/components/GradientBackground';
 import { BenefitCard } from '@/components/BenefitCard';
 import { FasciaIllustration } from '@/components/FasciaIllustration';
 import { Navigation } from '@/components/Navigation';
-import { ParallaxPhotoSection } from '@/components/ParallaxPhotoSection';
-import { getUnsplashImage } from '@/lib/unsplash-photos';
+import { ParallaxGradientSection } from '@/components/ParallaxGradientSection';
 
 export default function MFRPage() {
   return (
@@ -57,16 +56,8 @@ export default function MFRPage() {
         </Container>
       </Box>
 
-      {/* Featured Image */}
-      <Box sx={{ padding: { xs: '2rem', md: '4rem 2rem' } }}>
-        <Container maxWidth="lg">
-          <FeaturedImage
-            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&h=600&fit=crop"
-            alt="Myofascial Release Therapy"
-            aspectRatio={16 / 9}
-          />
-        </Container>
-      </Box>
+      {/* Featured Background */}
+      <GradientBackground variant="section" height="400px" />
 
       {/* What is Fascia - with Illustration */}
       <Box sx={{ padding: { xs: '3rem 2rem', md: '5rem 2rem' } }}>
@@ -379,8 +370,7 @@ export default function MFRPage() {
       </Box>
 
       {/* Parallax Section */}
-      <ParallaxPhotoSection
-        imageUrl={getUnsplashImage('massageTherapy', 'hero')}
+      <ParallaxGradientSection
         title="Myofascial Release"
         description="Gentle, sustained pressure techniques that allow your body to heal naturally."
       />

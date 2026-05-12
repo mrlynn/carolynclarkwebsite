@@ -4,10 +4,9 @@ import { Box, Container, Typography, Button } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
-import { FeaturedImage } from '@/components/FeaturedImage';
+import { GradientBackground } from '@/components/GradientBackground';
 import { Navigation } from '@/components/Navigation';
-import { ParallaxPhotoSection } from '@/components/ParallaxPhotoSection';
-import { getUnsplashImage } from '@/lib/unsplash-photos';
+import { ParallaxGradientSection } from '@/components/ParallaxGradientSection';
 
 export default function MassagePage() {
   return (
@@ -55,16 +54,8 @@ export default function MassagePage() {
         </Container>
       </Box>
 
-      {/* Featured Image */}
-      <Box sx={{ padding: { xs: '2rem', md: '4rem 2rem' } }}>
-        <Container maxWidth="lg">
-          <FeaturedImage
-            src={getUnsplashImage('massageTherapy', 'section')}
-            alt="Therapeutic Massage"
-            aspectRatio={16 / 9}
-          />
-        </Container>
-      </Box>
+      {/* Featured Background */}
+      <GradientBackground variant="section" height="400px" />
 
       {/* Main Content */}
       <Box sx={{ padding: { xs: '3rem 2rem', md: '5rem 2rem' } }}>
@@ -345,8 +336,7 @@ export default function MassagePage() {
       </Box>
 
       {/* Parallax Section */}
-      <ParallaxPhotoSection
-        imageUrl={getUnsplashImage('relaxation', 'hero')}
+      <ParallaxGradientSection
         title="Therapeutic"
         description="Customized massage sessions designed for relaxation, relief, and your overall well-being."
       />
