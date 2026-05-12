@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Box, Container, Typography, Button } from '@mui/material';
+import SpaIcon from '@mui/icons-material/Spa';
 import { brandColors } from '@/lib/theme';
 import { content } from '@/lib/content';
 
@@ -24,9 +25,18 @@ export function Footer() {
           }}
         >
           <Box>
-            <Typography variant="h4" sx={{ fontWeight: 600, marginBottom: 1 }}>
-              {content.business.name}
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, marginBottom: 1 }}>
+              <SpaIcon
+                sx={{
+                  fontSize: '1.8rem',
+                  color: brandColors.gold,
+                  flexShrink: 0,
+                }}
+              />
+              <Typography variant="h4" sx={{ fontWeight: 600 }}>
+                {content.business.name}
+              </Typography>
+            </Box>
             <Typography variant="body2" sx={{ color: brandColors.gold }}>
               {content.business.tagline}
             </Typography>

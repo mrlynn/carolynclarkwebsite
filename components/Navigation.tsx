@@ -19,6 +19,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import SpaIcon from '@mui/icons-material/Spa';
 import { brandColors } from '@/lib/theme';
 import Link from 'next/link';
 
@@ -221,24 +222,48 @@ export function Navigation() {
           }}
         >
           <Link href="/" style={{ textDecoration: 'none', minWidth: 0 }} onClick={closeDrawer}>
-            <Typography
+            <Box
               sx={{
-                fontSize: { xs: '1.05rem', sm: '1.25rem' },
-                fontWeight: 600,
-                color: brandColors.ink,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 0.75,
                 cursor: 'pointer',
-                transition: 'color 0.3s ease',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                maxWidth: { xs: '42vw', sm: 'none' },
+                transition: 'all 0.3s ease',
                 '&:hover': {
-                  color: brandColors.terracotta,
+                  '& .brand-text': {
+                    color: brandColors.terracotta,
+                  },
+                  '& .brand-icon': {
+                    color: brandColors.terracotta,
+                  },
                 },
               }}
             >
-              Carolyn Clark
-            </Typography>
+              <SpaIcon
+                className="brand-icon"
+                sx={{
+                  fontSize: { xs: '1.3rem', sm: '1.5rem' },
+                  color: brandColors.moss,
+                  transition: 'color 0.3s ease',
+                  flexShrink: 0,
+                }}
+              />
+              <Typography
+                className="brand-text"
+                sx={{
+                  fontSize: { xs: '1.05rem', sm: '1.25rem' },
+                  fontWeight: 600,
+                  color: brandColors.ink,
+                  transition: 'color 0.3s ease',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  maxWidth: { xs: '30vw', sm: 'none' },
+                }}
+              >
+                Carolyn Clark
+              </Typography>
+            </Box>
           </Link>
 
           <Box
