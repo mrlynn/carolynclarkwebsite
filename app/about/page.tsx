@@ -4,10 +4,9 @@ import { Box, Container, Typography } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
-import { FeaturedImage } from '@/components/FeaturedImage';
+import { GradientBackground } from '@/components/GradientBackground';
 import { Navigation } from '@/components/Navigation';
-import { ParallaxPhotoSection } from '@/components/ParallaxPhotoSection';
-import { getUnsplashImage } from '@/lib/unsplash-photos';
+import { ParallaxGradientSection } from '@/components/ParallaxGradientSection';
 
 export default function AboutPage() {
   return (
@@ -66,11 +65,7 @@ export default function AboutPage() {
               alignItems: 'center',
             }}
           >
-            <FeaturedImage
-              src={getUnsplashImage('professionalPortrait', 'portrait')}
-              alt="Peaceful moment of rest in a treatment setting"
-              aspectRatio={3 / 4}
-            />
+            <GradientBackground variant="section" height="500px" />
             <Box>
               <ScrollReveal>
                 <Typography
@@ -184,8 +179,7 @@ export default function AboutPage() {
       </Box>
 
       {/* Parallax Section */}
-      <ParallaxPhotoSection
-        imageUrl={getUnsplashImage('healingSpace', 'hero')}
+      <ParallaxGradientSection
         title="Creating a Space for"
         description="Safe, comfortable, and supportive environment where healing becomes possible."
       />
