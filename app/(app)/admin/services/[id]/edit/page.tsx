@@ -19,7 +19,6 @@ import { CreateServiceInput, UpdateServiceInput } from '@/lib/schemas/serviceSch
 interface Service extends CreateServiceInput {
   _id: string;
   status: 'active' | 'inactive';
-  featured?: boolean;
 }
 
 export default function EditServicePage({ params }: { params: Promise<{ id: string }> }) {

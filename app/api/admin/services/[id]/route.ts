@@ -104,6 +104,13 @@ export async function PATCH(request: NextRequest, { params }: Props) {
         { returnDocument: 'after' }
       );
 
+    if (!result || !result.value) {
+      return NextResponse.json(
+        { success: false, error: 'Service not found' },
+        { status: 404 }
+      );
+    }
+
     return NextResponse.json({ success: true, service: result.value });
   } catch (error) {
     console.error('Failed to update service:', error);
