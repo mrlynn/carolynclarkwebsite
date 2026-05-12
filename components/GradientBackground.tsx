@@ -19,12 +19,12 @@ export function GradientBackground({
   const getGradient = () => {
     switch (variant) {
       case 'hero':
-        return `linear-gradient(135deg, ${brandColors.cream} 0%, ${brandColors.creamDeep} 50%, ${brandColors.moss}15 100%)`;
+        return `linear-gradient(135deg, ${brandColors.cream} 0%, ${brandColors.creamDeep} 50%, ${brandColors.moss}25 100%)`;
       case 'light':
-        return `linear-gradient(135deg, ${brandColors.cream} 0%, ${brandColors.terracotta}08 100%)`;
+        return `linear-gradient(135deg, ${brandColors.cream} 0%, ${brandColors.terracotta}15 100%)`;
       case 'section':
       default:
-        return `linear-gradient(135deg, ${brandColors.creamDeep} 0%, ${brandColors.moss}10 50%, ${brandColors.terracotta}08 100%)`;
+        return `linear-gradient(135deg, ${brandColors.creamDeep} 0%, ${brandColors.moss}20 50%, ${brandColors.terracotta}15 100%)`;
     }
   };
 
@@ -41,9 +41,9 @@ export function GradientBackground({
           position: 'absolute',
           inset: 0,
           backgroundImage: `
-            radial-gradient(circle at 20% 50%, ${brandColors.moss}08 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, ${brandColors.terracotta}05 0%, transparent 50%),
-            radial-gradient(circle at 40% 20%, ${brandColors.gold}05 0%, transparent 50%)
+            radial-gradient(circle at 20% 50%, ${brandColors.moss}12 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, ${brandColors.terracotta}10 0%, transparent 50%),
+            radial-gradient(circle at 40% 20%, ${brandColors.gold}08 0%, transparent 50%)
           `,
           pointerEvents: 'none',
         },

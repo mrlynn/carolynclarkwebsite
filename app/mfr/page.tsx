@@ -57,7 +57,7 @@ export default function MFRPage() {
       </Box>
 
       {/* Featured Background */}
-      <GradientBackground variant="section" height="400px" />
+      <GradientBackground variant="section" height="200px" />
 
       {/* What is Fascia - with Illustration */}
       <Box sx={{ padding: { xs: '3rem 2rem', md: '5rem 2rem' } }}>

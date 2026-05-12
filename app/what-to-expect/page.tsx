@@ -80,29 +80,18 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.creamDeep}`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.terracotta,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        Arrive 5-10 Minutes Early
-                      </Typography>
+                      Arrive 5-10 Minutes Early
+                    </Typography>
                       <Typography
                         sx={{
                           fontSize: '1rem',
@@ -112,7 +101,6 @@ export default function WhatToExpectPage() {
                       >
                         This allows time to settle in, fill out any necessary paperwork, and discuss your health history and goals for the session.
                       </Typography>
-                    </Box>
                   </Box>
                 </Box>
 
@@ -125,29 +113,18 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.creamDeep}`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.terracotta,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        Wear Comfortable Clothing
-                      </Typography>
+                      Wear Comfortable Clothing
+                    </Typography>
                       <Typography
                         sx={{
                           fontSize: '1rem',
@@ -157,7 +134,6 @@ export default function WhatToExpectPage() {
                       >
                         Loose-fitting clothes are ideal. You'll change into comfortable garments for the session, and a private changing area is provided. Typically, clients wear undergarments during the massage.
                       </Typography>
-                    </Box>
                   </Box>
                 </Box>
 
@@ -170,29 +146,18 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.creamDeep}`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.terracotta,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        Stay Hydrated
-                      </Typography>
+                      Stay Hydrated
+                    </Typography>
                       <Typography
                         sx={{
                           fontSize: '1rem',
@@ -202,7 +167,6 @@ export default function WhatToExpectPage() {
                       >
                         Drink plenty of water in the days before your appointment. Avoid heavy meals 1-2 hours before your session, but don't come hungry either. A light snack is fine.
                       </Typography>
-                    </Box>
                   </Box>
                 </Box>
 
@@ -215,39 +179,27 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.creamDeep}`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.terracotta,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      �
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        Clear Your Schedule
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '1rem',
-                          lineHeight: 1.8,
-                          color: brandColors.inkSoft,
-                        }}
-                      >
-                        Plan to relax after your session rather than rush back to work or demanding activities. The body continues integrating the work after you leave, so gentle rest is beneficial.
-                      </Typography>
-                    </Box>
+                      Clear Your Schedule
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: '1rem',
+                        lineHeight: 1.8,
+                        color: brandColors.inkSoft,
+                      }}
+                    >
+                      Plan to relax after your session rather than rush back to work or demanding activities. The body continues integrating the work after you leave, so gentle rest is beneficial.
+                    </Typography>
                   </Box>
                 </Box>
               </Box>
@@ -324,49 +276,37 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.moss}20`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.moss,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        Hands-On Myofascial Release (45-85 minutes)
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '1rem',
-                          lineHeight: 1.8,
-                          color: brandColors.inkSoft,
-                          marginBottom: 1,
-                        }}
-                      >
-                        You'll lie on a comfortable treatment table, and I'll use gentle, sustained pressure to engage the fascial system. The pressure is typically sustained for 60-90 seconds or longer, allowing restrictions to gradually release.
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '1rem',
-                          lineHeight: 1.8,
-                          color: brandColors.inkSoft,
-                        }}
-                      >
-                        The work is never aggressive or forced. You're in control—if something feels uncomfortable, let me know and I'll adjust. Communication is key.
-                      </Typography>
-                    </Box>
+                      Hands-On Myofascial Release (45-85 minutes)
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: '1rem',
+                        lineHeight: 1.8,
+                        color: brandColors.inkSoft,
+                        marginBottom: 1,
+                      }}
+                    >
+                      You'll lie on a comfortable treatment table, and I'll use gentle, sustained pressure to engage the fascial system. The pressure is typically sustained for 60-90 seconds or longer, allowing restrictions to gradually release.
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: '1rem',
+                        lineHeight: 1.8,
+                        color: brandColors.inkSoft,
+                      }}
+                    >
+                      The work is never aggressive or forced. You're in control—if something feels uncomfortable, let me know and I'll adjust. Communication is key.
+                    </Typography>
                   </Box>
                 </Box>
 
@@ -379,57 +319,45 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.moss}20`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.moss,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        What You Might Experience
-                      </Typography>
-                      <Box
-                        component="ul"
-                        sx={{
-                          listStyle: 'none',
-                          padding: 0,
-                          '& li': {
-                            fontSize: '1rem',
-                            lineHeight: 1.8,
-                            color: brandColors.inkSoft,
-                            marginBottom: '0.75rem',
-                            paddingLeft: '1.5rem',
-                            position: 'relative',
-                            '&:before': {
-                              content: '"◆"',
-                              position: 'absolute',
-                              left: 0,
-                              color: brandColors.moss,
-                            },
+                      What You Might Experience
+                    </Typography>
+                    <Box
+                      component="ul"
+                      sx={{
+                        listStyle: 'none',
+                        padding: 0,
+                        '& li': {
+                          fontSize: '1rem',
+                          lineHeight: 1.8,
+                          color: brandColors.inkSoft,
+                          marginBottom: '0.75rem',
+                          paddingLeft: '1.5rem',
+                          position: 'relative',
+                          '&:before': {
+                            content: '"◆"',
+                            position: 'absolute',
+                            left: 0,
+                            color: brandColors.moss,
                           },
-                        }}
-                      >
-                        <li>Deep pressure that feels therapeutic, not painful</li>
-                        <li>Sensations of release, unwinding, or warmth</li>
-                        <li>Movement or adjustment in restricted areas</li>
-                        <li>Emotional release (yes, this is normal and welcome)</li>
-                        <li>Subtle pulsing or vibration in the tissue</li>
-                        <li>Relaxation and ease as tension releases</li>
-                      </Box>
+                        },
+                      }}
+                    >
+                      <li>Deep pressure that feels therapeutic, not painful</li>
+                      <li>Sensations of release, unwinding, or warmth</li>
+                      <li>Movement or adjustment in restricted areas</li>
+                      <li>Emotional release (yes, this is normal and welcome)</li>
+                      <li>Subtle pulsing or vibration in the tissue</li>
+                      <li>Relaxation and ease as tension releases</li>
                     </Box>
                   </Box>
                 </Box>
@@ -443,39 +371,27 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.moss}20`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.moss,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        Speak Up
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '1rem',
-                          lineHeight: 1.8,
-                          color: brandColors.inkSoft,
-                        }}
-                      >
-                        You can talk during the session or rest silently—whatever serves you best. If pressure is too intense, if you need a break, or if you want to discuss what you're feeling, just let me know. Your comfort and safety are paramount.
-                      </Typography>
-                    </Box>
+                      Speak Up
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: '1rem',
+                        lineHeight: 1.8,
+                        color: brandColors.inkSoft,
+                      }}
+                    >
+                      You can talk during the session or rest silently—whatever serves you best. If pressure is too intense, if you need a break, or if you want to discuss what you're feeling, just let me know. Your comfort and safety are paramount.
+                    </Typography>
                   </Box>
                 </Box>
               </Box>
@@ -552,39 +468,27 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.terracotta}20`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.terracotta,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        Drink Plenty of Water
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '1rem',
-                          lineHeight: 1.8,
-                          color: brandColors.inkSoft,
-                        }}
-                      >
-                        The work mobilizes fluid in the tissues. Hydrate well for at least 24-48 hours after your session to support the body's natural detoxification and healing processes.
-                      </Typography>
-                    </Box>
+                      Drink Plenty of Water
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: '1rem',
+                        lineHeight: 1.8,
+                        color: brandColors.inkSoft,
+                      }}
+                    >
+                      The work mobilizes fluid in the tissues. Hydrate well for at least 24-48 hours after your session to support the body's natural detoxification and healing processes.
+                    </Typography>
                   </Box>
                 </Box>
 
@@ -597,49 +501,37 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.terracotta}20`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.terracotta,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        Gentle Self-Care
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '1rem',
-                          lineHeight: 1.8,
-                          color: brandColors.inkSoft,
-                          marginBottom: 1,
-                        }}
-                      >
-                        A warm bath or shower within a few hours can help your body continue integrating the work. Gentle stretching, walks, or relaxing activities are wonderful. Avoid intense exercise for at least 24 hours.
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '1rem',
-                          lineHeight: 1.8,
-                          color: brandColors.inkSoft,
-                        }}
-                      >
-                        I'll provide self-treatment techniques and home care recommendations to support your continued progress between sessions.
-                      </Typography>
-                    </Box>
+                      Gentle Self-Care
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: '1rem',
+                        lineHeight: 1.8,
+                        color: brandColors.inkSoft,
+                        marginBottom: 1,
+                      }}
+                    >
+                      A warm bath or shower within a few hours can help your body continue integrating the work. Gentle stretching, walks, or relaxing activities are wonderful. Avoid intense exercise for at least 24 hours.
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: '1rem',
+                        lineHeight: 1.8,
+                        color: brandColors.inkSoft,
+                      }}
+                    >
+                      I'll provide self-treatment techniques and home care recommendations to support your continued progress between sessions.
+                    </Typography>
                   </Box>
                 </Box>
 
@@ -652,57 +544,45 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.terracotta}20`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.terracotta,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        In the Days Following
-                      </Typography>
-                      <Box
-                        component="ul"
-                        sx={{
-                          listStyle: 'none',
-                          padding: 0,
-                          '& li': {
-                            fontSize: '1rem',
-                            lineHeight: 1.8,
-                            color: brandColors.inkSoft,
-                            marginBottom: '0.75rem',
-                            paddingLeft: '1.5rem',
-                            position: 'relative',
-                            '&:before': {
-                              content: '"�"',
-                              position: 'absolute',
-                              left: 0,
-                              color: brandColors.terracotta,
-                            },
+                      In the Days Following
+                    </Typography>
+                    <Box
+                      component="ul"
+                      sx={{
+                        listStyle: 'none',
+                        padding: 0,
+                        '& li': {
+                          fontSize: '1rem',
+                          lineHeight: 1.8,
+                          color: brandColors.inkSoft,
+                          marginBottom: '0.75rem',
+                          paddingLeft: '1.5rem',
+                          position: 'relative',
+                          '&:before': {
+                            content: '"◆"',
+                            position: 'absolute',
+                            left: 0,
+                            color: brandColors.terracotta,
                           },
-                        }}
-                      >
-                        <li>You may feel soreness or tenderness (mild, not sharp pain)</li>
-                        <li>Increased awareness of your body and posture</li>
-                        <li>Improved movement and reduced tension</li>
-                        <li>Better sleep quality</li>
-                        <li>Emotional shifts or insights as trauma releases</li>
-                        <li>Gradual improvement in your condition</li>
-                      </Box>
+                        },
+                      }}
+                    >
+                      <li>You may feel soreness or tenderness (mild, not sharp pain)</li>
+                      <li>Increased awareness of your body and posture</li>
+                      <li>Improved movement and reduced tension</li>
+                      <li>Better sleep quality</li>
+                      <li>Emotional shifts or insights as trauma releases</li>
+                      <li>Gradual improvement in your condition</li>
                     </Box>
                   </Box>
                 </Box>
