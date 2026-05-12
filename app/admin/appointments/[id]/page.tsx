@@ -308,7 +308,7 @@ export default function AppointmentDetailPage() {
             <Box>
               <Typography variant="caption" sx={{ color: brandColors.inkSoft }}>Price</Typography>
               <Typography variant="body1" sx={{ color: brandColors.terracotta, fontWeight: 600 }}>
-                ${appointment.total_price.toFixed(2)}
+                ${(appointment.total_price || 0).toFixed(2)}
               </Typography>
             </Box>
 
