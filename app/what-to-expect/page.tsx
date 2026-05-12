@@ -224,7 +224,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      âœ
+                      ï¿½
                     </Box>
                     <Box>
                       <Typography
@@ -688,7 +688,7 @@ export default function WhatToExpectPage() {
                             paddingLeft: '1.5rem',
                             position: 'relative',
                             '&:before': {
-                              content: '"â†"',
+                              content: '"ï¿½"',
                               position: 'absolute',
                               left: 0,
                               color: brandColors.terracotta,
@@ -746,7 +746,7 @@ export default function WhatToExpectPage() {
                     paddingLeft: '1.5rem',
                     position: 'relative',
                     '&:before': {
-                      content: '"âœ"',
+                      content: '"ï¿½"',
                       position: 'absolute',
                       left: 0,
                       color: brandColors.moss,
