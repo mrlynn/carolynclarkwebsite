@@ -231,39 +231,27 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.moss}20`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.moss,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        Initial Assessment (5-10 minutes)
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '1rem',
-                          lineHeight: 1.8,
-                          color: brandColors.inkSoft,
-                        }}
-                      >
-                        We'll discuss your health history, any injuries, current pain patterns, and what you hope to achieve. This conversation helps me understand your unique needs and tailor the session accordingly.
-                      </Typography>
-                    </Box>
+                      Initial Assessment (5-10 minutes)
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: '1rem',
+                        lineHeight: 1.8,
+                        color: brandColors.inkSoft,
+                      }}
+                    >
+                      We'll discuss your health history, any injuries, current pain patterns, and what you hope to achieve. This conversation helps me understand your unique needs and tailor the session accordingly.
+                    </Typography>
                   </Box>
                 </Box>
 
@@ -423,39 +411,27 @@ export default function WhatToExpectPage() {
                     border: `1px solid ${brandColors.terracotta}20`,
                   }}
                 >
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
+                  <Box>
+                    <Typography
+                      variant="h4"
                       sx={{
-                        fontSize: '2rem',
-                        color: brandColors.terracotta,
-                        minWidth: '3rem',
-                        textAlign: 'center',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: brandColors.ink,
+                        marginBottom: 1,
                       }}
                     >
-                      
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.25rem',
-                          fontWeight: 600,
-                          color: brandColors.ink,
-                          marginBottom: 1,
-                        }}
-                      >
-                        Take Time to Integrate
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: '1rem',
-                          lineHeight: 1.8,
-                          color: brandColors.inkSoft,
-                        }}
-                      >
-                        The body continues processing the release for hours after your session. Rest, avoid strenuous activity, and allow yourself to feel what's happening. Many clients feel deeply relaxed and may want to rest or sleep.
-                      </Typography>
-                    </Box>
+                      Take Time to Integrate
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: '1rem',
+                        lineHeight: 1.8,
+                        color: brandColors.inkSoft,
+                      }}
+                    >
+                      The body continues processing the release for hours after your session. Rest, avoid strenuous activity, and allow yourself to feel what's happening. Many clients feel deeply relaxed and may want to rest or sleep.
+                    </Typography>
                   </Box>
                 </Box>
 
