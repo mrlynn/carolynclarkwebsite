@@ -13,19 +13,19 @@ import {
   Divider,
 } from '@mui/material';
 import { brandColors } from '@/lib/theme';
-import { format } from 'date-fns';
+import { formatDisplayDateTime } from '@/lib/date-helpers';
 
 interface Service {
   _id: string;
   name: string;
-  duration_minutes: number;
-  price: number;
+  durations: Array<{ durationMinutes: number; price: number }>;
 }
 
 export default function ConfirmationPage() {
   const router = useRouter();
   const [bookingData, setBookingData] = useState<any>(null);
   const [service, setService] = useState<Service | null>(null);
+  const [durationMinutes, setDurationMinutes] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -38,8 +38,9 @@ export default function ConfirmationPage() {
     const clientEmail = sessionStorage.getItem('clientEmail');
     const clientPhone = sessionStorage.getItem('clientPhone');
     const clientNotes = sessionStorage.getItem('clientNotes');
+    const selectedDuration = sessionStorage.getItem('selectedDurationMinutes');
 
-    if (!serviceId || !scheduledAt || !clientName || !clientEmail || !clientPhone) {
+    if (!serviceId || !scheduledAt || !clientName || !clientEmail || !clientPhone || !selectedDuration) {
       router.push('/booking/service');
       return;
     }
@@ -53,6 +54,7 @@ export default function ConfirmationPage() {
       clientNotes,
     });
 
+    setDurationMinutes(parseInt(selectedDuration, 10));
     fetchServiceDetails(serviceId);
   }, [router]);
 
@@ -87,6 +89,7 @@ export default function ConfirmationPage() {
           clientPhone: bookingData.clientPhone,
           clientNotes: bookingData.clientNotes,
           scheduledAt: bookingData.scheduledAt,
+          duration_minutes: durationMinutes,
         }),
       });
 
@@ -102,6 +105,7 @@ export default function ConfirmationPage() {
       sessionStorage.removeItem('clientEmail');
       sessionStorage.removeItem('clientPhone');
       sessionStorage.removeItem('clientNotes');
+      sessionStorage.removeItem('selectedDurationMinutes');
 
       setSuccess(true);
     } catch (err) {
@@ -165,9 +169,6 @@ export default function ConfirmationPage() {
     return <Typography>Loading...</Typography>;
   }
 
-  const [dateStr, timeStr] = bookingData.scheduledAt.split('T');
-  const timeOnly = timeStr.substring(0, 5);
-
   return (
     <Box>
       <Typography variant="h6" sx={{ marginBottom: 3, color: brandColors.ink }}>
@@ -200,7 +201,7 @@ export default function ConfirmationPage() {
               Date & Time
             </Typography>
             <Typography variant="body1" sx={{ color: brandColors.ink, fontWeight: 600 }}>
-              {format(new Date(dateStr), 'MMMM d, yyyy')} at {timeOnly}
+              {formatDisplayDateTime(bookingData.scheduledAt)}
             </Typography>
           </Box>
 
@@ -209,7 +210,7 @@ export default function ConfirmationPage() {
               Duration
             </Typography>
             <Typography variant="body1" sx={{ color: brandColors.ink, fontWeight: 600 }}>
-              {service.duration_minutes} minutes
+              {durationMinutes} minutes
             </Typography>
           </Box>
 
@@ -220,7 +221,7 @@ export default function ConfirmationPage() {
               Total
             </Typography>
             <Typography variant="h6" sx={{ color: brandColors.terracotta, fontWeight: 600 }}>
-              ${service.price}
+              ${service.durations.find(d => d.durationMinutes === durationMinutes)?.price || 'N/A'}
             </Typography>
           </Box>
         </CardContent>

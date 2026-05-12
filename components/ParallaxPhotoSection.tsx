@@ -4,17 +4,20 @@ import { Box, Container, Typography } from '@mui/material';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { brandColors } from '@/lib/theme';
-import Image from 'next/image';
 
 interface ParallaxPhotoSectionProps {
-  imageUrl: string;
   title?: string;
+  /** Optional second line or clause shown in terracotta italic after the title. */
+  titleEmphasis?: string;
   description?: string;
 }
 
+/**
+ * Full-viewport parallax band using palette gradients only (no stock photography).
+ */
 export function ParallaxPhotoSection({
-  imageUrl,
   title,
+  titleEmphasis,
   description,
 }: ParallaxPhotoSectionProps) {
   const containerRef = useRef(null);
@@ -23,8 +26,8 @@ export function ParallaxPhotoSection({
     offset: ['start start', 'end start'],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 1, 0.3]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 1, 0.85]);
 
   return (
     <Box
@@ -38,39 +41,60 @@ export function ParallaxPhotoSection({
         justifyContent: 'center',
       }}
     >
-      {/* Parallax Background Image */}
       <motion.div
         style={{
           position: 'absolute',
-          inset: 0,
+          inset: '-12%',
           zIndex: 0,
           y,
           opacity,
         }}
       >
-        <Image
-          src={imageUrl}
-          alt="Therapeutic healing environment"
-          fill
-          style={{
-            objectFit: 'cover',
-            objectPosition: 'center',
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            background: `linear-gradient(135deg, ${brandColors.ink} 0%, ${brandColors.moss}35 55%, ${brandColors.terracotta}28 100%)`,
           }}
-          priority
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            background: `
+              radial-gradient(ellipse 80% 60% at 20% 40%, ${brandColors.terracotta}25 0%, transparent 55%),
+              radial-gradient(ellipse 70% 50% at 85% 70%, ${brandColors.moss}22 0%, transparent 50%),
+              radial-gradient(ellipse 50% 40% at 50% 90%, ${brandColors.gold}12 0%, transparent 45%)
+            `,
+          }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            opacity: 0.35,
+            backgroundImage: `
+              repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 255, 255, 0.03) 2px,
+                rgba(255, 255, 255, 0.03) 4px
+              )
+            `,
+          }}
         />
       </motion.div>
 
-      {/* Dark overlay for text readability */}
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
-          background: `linear-gradient(135deg, ${brandColors.ink}70 0%, ${brandColors.ink}40 100%)`,
+          background: `linear-gradient(135deg, ${brandColors.ink}88 0%, ${brandColors.ink}55 100%)`,
           zIndex: 1,
         }}
       />
 
-      {/* Content */}
       <Container
         maxWidth="lg"
         sx={{
@@ -97,15 +121,17 @@ export function ParallaxPhotoSection({
               }}
             >
               {title}
-              <span
-                style={{
-                  color: brandColors.terracotta,
-                  fontStyle: 'italic',
-                  marginLeft: '0.5rem',
-                }}
-              >
-                Healing
-              </span>
+              {titleEmphasis ? (
+                <span
+                  style={{
+                    color: brandColors.terracotta,
+                    fontStyle: 'italic',
+                    marginLeft: '0.35rem',
+                  }}
+                >
+                  {titleEmphasis}
+                </span>
+              ) : null}
             </Typography>
           )}
 
@@ -126,7 +152,6 @@ export function ParallaxPhotoSection({
         </motion.div>
       </Container>
 
-      {/* Scroll indicator */}
       <motion.div
         animate={{ y: [0, 15, 0] }}
         transition={{ duration: 2, repeat: Infinity }}

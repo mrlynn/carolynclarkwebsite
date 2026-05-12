@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Box, Container, Typography, Button } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { ScrollReveal } from '@/components/ScrollReveal';
@@ -7,8 +8,32 @@ import { Footer } from '@/components/Footer';
 import { GradientBackground } from '@/components/GradientBackground';
 import { Navigation } from '@/components/Navigation';
 import { ParallaxGradientSection } from '@/components/ParallaxGradientSection';
+import { content } from '@/lib/content';
 
 export default function MassagePage() {
+  const [massagePricing, setMassagePricing] = useState<Array<{ duration: string; price: string }>>([]);
+
+  useEffect(() => {
+    const fetchMassageServices = async () => {
+      try {
+        const response = await fetch('/api/services');
+        const services = await response.json();
+        const massageServices = services
+          .filter((s: any) => s.name === 'Therapeutic Massage')
+          .sort((a: any, b: any) => a.duration_minutes - b.duration_minutes)
+          .map((s: any) => ({
+            duration: `${s.duration_minutes} Minutes`,
+            price: `$${s.price}`,
+          }));
+        setMassagePricing(massageServices);
+      } catch (error) {
+        console.error('Failed to fetch massage pricing:', error);
+      }
+    };
+
+    fetchMassageServices();
+  }, []);
+
   return (
     <Box>
       <Navigation />
@@ -48,7 +73,7 @@ export default function MassagePage() {
                 lineHeight: 1.8,
               }}
             >
-              Customized sessions designed to support pain relief, improved mobility, relaxation, and overall well-being.
+              {content.services.secondary.heroLead}
             </Typography>
           </ScrollReveal>
         </Container>
@@ -104,8 +129,9 @@ export default function MassagePage() {
               <Box
                 component="ul"
                 sx={{
-                  listStyle: 'none',
-                  padding: 0,
+                  listStyle: 'disc',
+                  paddingLeft: '1.25rem',
+                  margin: 0,
                   display: 'grid',
                   gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
                   gap: 2,
@@ -113,16 +139,6 @@ export default function MassagePage() {
                     fontSize: '1.05rem',
                     lineHeight: 1.8,
                     color: brandColors.inkSoft,
-                    paddingLeft: '2rem',
-                    position: 'relative',
-                    '&:before': {
-                      content: '"◆"',
-                      position: 'absolute',
-                      left: 0,
-                      color: brandColors.moss,
-                      fontSize: '0.8rem',
-                      marginTop: '0.3rem',
-                    },
                   },
                 }}
               >
@@ -161,22 +177,14 @@ export default function MassagePage() {
               <Box
                 component="ul"
                 sx={{
-                  listStyle: 'none',
-                  padding: 0,
+                  listStyle: 'disc',
+                  paddingLeft: '1.25rem',
+                  margin: 0,
                   '& li': {
                     fontSize: '1rem',
                     lineHeight: 1.8,
                     color: brandColors.inkSoft,
                     marginBottom: '1rem',
-                    paddingLeft: '2rem',
-                    position: 'relative',
-                    '&:before': {
-                      content: '"✓"',
-                      position: 'absolute',
-                      left: 0,
-                      color: brandColors.moss,
-                      fontWeight: 'bold',
-                    },
                   },
                 }}
               >
@@ -184,8 +192,8 @@ export default function MassagePage() {
                 <li>Improved flexibility and range of motion</li>
                 <li>Better circulation and recovery</li>
                 <li>Stress relief and relaxation</li>
-                <li>Enhanced sense of well-being</li>
-                <li>Support for ongoing healing</li>
+                <li>Improved ease in day-to-day movement</li>
+                <li>Support alongside injury or post-surgical recovery</li>
               </Box>
             </Box>
           </ScrollReveal>
@@ -211,10 +219,7 @@ export default function MassagePage() {
                   gap: 2,
                 }}
               >
-                {[
-                  { duration: '60 Minutes', price: '$120' },
-                  { duration: '90 Minutes', price: '$180' },
-                ].map((item, idx) => (
+                {massagePricing.map((item, idx) => (
                   <Box
                     key={idx}
                     sx={{
@@ -271,7 +276,7 @@ export default function MassagePage() {
                   color: brandColors.inkSoft,
                 }}
               >
-                Therapeutic massage supports anyone seeking relief from muscle tension, stress, or physical discomfort. Whether you're recovering from activity, managing chronic tension, or simply prioritizing relaxation and self-care, therapeutic massage can be an important part of your wellness routine.
+                {content.services.secondary.whoBenefitsBody}
               </Typography>
             </Box>
           </ScrollReveal>
@@ -338,7 +343,7 @@ export default function MassagePage() {
       {/* Parallax Section */}
       <ParallaxGradientSection
         title="Therapeutic"
-        description="Customized massage sessions designed for relaxation, relief, and your overall well-being."
+        description={content.services.secondary.parallaxBlurb}
       />
 
       <Footer />

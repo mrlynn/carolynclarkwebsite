@@ -11,9 +11,11 @@ import {
   Paper,
 } from '@mui/material';
 import { brandColors } from '@/lib/theme';
-import { format, addDays, startOfMonth, endOfMonth, eachDayOfInterval, isAfter, isBefore } from 'date-fns';
+import { format, addDays, startOfMonth, endOfMonth, eachDayOfInterval, isAfter, isBefore, startOfWeek, endOfWeek, eachWeekOfInterval } from 'date-fns';
+import { createScheduledAtISO, formatDisplayDate } from '@/lib/date-helpers';
 
 interface TimeSlot {
+  _id?: string;
   time_start: string;
   time_end: string;
   is_available: boolean;
@@ -21,7 +23,8 @@ interface TimeSlot {
 
 interface Service {
   _id: string;
-  duration_minutes: number;
+  name: string;
+  durations: Array<{ durationMinutes: number; price: number }>;
 }
 
 export default function CalendarPage() {
@@ -34,30 +37,67 @@ export default function CalendarPage() {
   const [error, setError] = useState('');
   const [serviceId, setServiceId] = useState<string | null>(null);
   const [serviceDuration, setServiceDuration] = useState<number>(60);
+  const [availableDates, setAvailableDates] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const id = sessionStorage.getItem('selectedServiceId');
+    const duration = sessionStorage.getItem('selectedDurationMinutes');
     if (!id) {
       router.push('/booking/service');
       return;
     }
     setServiceId(id);
-    fetchServiceDetails(id);
+    if (duration) {
+      setServiceDuration(parseInt(duration, 10));
+    }
   }, [router]);
 
-  const fetchServiceDetails = async (id: string) => {
-    try {
-      const response = await fetch('/api/services');
-      if (!response.ok) throw new Error('Failed to fetch services');
-      const data = await response.json();
-      const service = data.find((s: Service) => s._id === id);
-      if (service) {
-        setServiceDuration(service.duration_minutes);
+  // Fetch availability for all dates to determine which are selectable
+  useEffect(() => {
+    if (!serviceDuration) return;
+
+    const fetchAvailabilityForAllDates = async () => {
+      const today = new Date();
+      const calendarStart = startOfWeek(today, { weekStartsOn: 0 });
+      const calendarEnd = endOfWeek(addDays(today, 29), { weekStartsOn: 0 });
+      const allDays = eachDayOfInterval({ start: calendarStart, end: calendarEnd });
+
+      const available = new Set<string>();
+
+      for (const date of allDays) {
+        const dayOfWeek = date.getDay();
+        // Skip weekends (0 = Sunday, 6 = Saturday)
+        if (dayOfWeek === 0 || dayOfWeek === 6) {
+          continue;
+        }
+
+        // Skip past dates
+        if (date < today && date.toDateString() !== today.toDateString()) {
+          continue;
+        }
+
+        try {
+          const dateStr = format(date, 'yyyy-MM-dd');
+          const response = await fetch(
+            `/api/availability?date=${dateStr}T00:00:00Z&serviceDurationMinutes=${serviceDuration}`
+          );
+
+          if (response.ok) {
+            const slots = await response.json();
+            if (slots.length > 0) {
+              available.add(date.toDateString());
+            }
+          }
+        } catch (err) {
+          console.error(`Failed to fetch availability for ${date}:`, err);
+        }
       }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+
+      setAvailableDates(available);
+    };
+
+    fetchAvailabilityForAllDates();
+  }, [serviceDuration]);
 
   const fetchAvailableSlots = async (date: Date) => {
     if (!serviceId) return;
@@ -87,7 +127,20 @@ export default function CalendarPage() {
     }
   };
 
+  const isDateSelectable = (date: Date): boolean => {
+    const today = new Date();
+    const dayOfWeek = date.getDay();
+    const isPast = date < today && date.toDateString() !== today.toDateString();
+
+    // Can't select past dates, weekends, or days without availability
+    if (isPast || dayOfWeek === 0 || dayOfWeek === 6 || !availableDates.has(date.toDateString())) {
+      return false;
+    }
+    return true;
+  };
+
   const handleDateSelect = (date: Date) => {
+    if (!isDateSelectable(date)) return;
     setSelectedDate(date);
     setSelectedTime(null);
     fetchAvailableSlots(date);
@@ -103,16 +156,19 @@ export default function CalendarPage() {
       return;
     }
 
-    // Combine date and time
-    const dateStr = format(selectedDate, 'yyyy-MM-dd');
-    const scheduledAt = `${dateStr}T${selectedTime}:00`;
+    // Create ISO format date with UTC timezone
+    const scheduledAt = createScheduledAtISO(selectedDate, selectedTime);
 
     sessionStorage.setItem('scheduledAt', scheduledAt);
     router.push('/booking/info');
   };
 
   const today = new Date();
-  const nextDays = Array.from({ length: 30 }, (_, i) => addDays(today, i));
+  const calendarStart = startOfWeek(today, { weekStartsOn: 0 }); // Sunday
+  const calendarEnd = endOfWeek(addDays(today, 29), { weekStartsOn: 0 }); // Saturday
+  const allDays = eachDayOfInterval({ start: calendarStart, end: calendarEnd });
+
+  const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   return (
     <Box>
@@ -130,39 +186,74 @@ export default function CalendarPage() {
         Choose a Date
       </Typography>
 
+      {/* Day labels header */}
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: { xs: 'repeat(5, 1fr)', md: 'repeat(7, 1fr)' },
+          gridTemplateColumns: 'repeat(7, 1fr)',
+          gap: 1,
+          marginBottom: 1,
+        }}
+      >
+        {dayLabels.map((day) => (
+          <Typography
+            key={day}
+            variant="caption"
+            sx={{
+              textAlign: 'center',
+              fontWeight: 600,
+              color: brandColors.inkSoft,
+            }}
+          >
+            {day}
+          </Typography>
+        ))}
+      </Box>
+
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(7, 1fr)',
           gap: 1,
           marginBottom: 3,
         }}
       >
-        {nextDays.map((date) => (
-          <Paper
-            key={date.toISOString()}
-            onClick={() => handleDateSelect(date)}
-            sx={{
-              padding: 1.5,
-              textAlign: 'center',
-              cursor: 'pointer',
-              backgroundColor: selectedDate?.toDateString() === date.toDateString() ? brandColors.terracotta : 'white',
-              color: selectedDate?.toDateString() === date.toDateString() ? 'white' : 'inherit',
-              border: selectedDate?.toDateString() === date.toDateString() ? 'none' : `1px solid #e0e0e0`,
-              transition: 'all 0.2s ease',
-              '&:hover': {
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              },
-            }}
-          >
-            <Typography variant="caption" sx={{ display: 'block', fontWeight: 600 }}>
-              {format(date, 'MMM d')}
-            </Typography>
-            <Typography variant="caption" sx={{ fontSize: '0.7rem' }}>
-              {format(date, 'EEE')}
-            </Typography>
-          </Paper>
-        ))}
+        {allDays.map((date) => {
+          const dayOfWeek = date.getDay();
+          const isPast = date < today && date.toDateString() !== today.toDateString();
+          const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+          const isSelectable = isDateSelectable(date);
+          const isSelected = selectedDate?.toDateString() === date.toDateString();
+
+          return (
+            <Paper
+              key={date.toISOString()}
+              onClick={() => handleDateSelect(date)}
+              sx={{
+                padding: 1.5,
+                textAlign: 'center',
+                cursor: isSelectable ? 'pointer' : 'default',
+                backgroundColor: isSelected ? brandColors.terracotta : 'white',
+                color: isSelected ? 'white' : !isSelectable ? brandColors.inkMute : 'inherit',
+                opacity: isSelectable ? 1 : 0.5,
+                border: isSelected ? 'none' : `1px solid ${isSelectable ? '#e0e0e0' : '#d0d0d0'}`,
+                transition: 'all 0.2s ease',
+                '&:hover': isSelectable ? {
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                } : {},
+              }}
+            >
+              <Typography variant="caption" sx={{ display: 'block', fontWeight: 600 }}>
+                {format(date, 'd')}
+              </Typography>
+              {!isSelectable && (
+                <Typography variant="caption" sx={{ display: 'block', fontSize: '0.65rem', color: brandColors.inkMute }}>
+                  {isPast ? 'Past' : isWeekend ? 'Closed' : 'No slots'}
+                </Typography>
+              )}
+            </Paper>
+          );
+        })}
       </Box>
 
       {selectedDate && (
@@ -186,7 +277,7 @@ export default function CalendarPage() {
             >
               {timeSlots.map((slot) => (
                 <Paper
-                  key={slot.time_start}
+                  key={slot._id || `${slot.time_start}-${slot.time_end}`}
                   onClick={() => handleTimeSelect(slot.time_start)}
                   sx={{
                     padding: 1.5,

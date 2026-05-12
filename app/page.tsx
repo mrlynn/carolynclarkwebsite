@@ -6,10 +6,10 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
 import { Navigation } from '@/components/Navigation';
 import { BenefitCard } from '@/components/BenefitCard';
+import { LandingPageServices } from '@/components/LandingPageServices';
 import { ParallaxPhotoSection } from '@/components/ParallaxPhotoSection';
 import { brandColors } from '@/lib/theme';
 import { content } from '@/lib/content';
-import { getUnsplashImage } from '@/lib/unsplash-photos';
 
 export default function Home() {
   return (
@@ -46,9 +46,9 @@ export default function Home() {
                     color: brandColors.ink,
                   }}
                 >
-                  I help people who{' '}
+                  {content.about.homeTitle}{' '}
                   <span style={{ color: brandColors.terracotta, fontStyle: 'italic' }}>
-                    feel like they've tried everything
+                    {content.about.homeTitleEmphasis}
                   </span>
                 </Typography>
               </ScrollReveal>
@@ -64,7 +64,18 @@ export default function Home() {
                     marginBottom: 2,
                   }}
                 >
-                  {content.about.intro}
+                  {content.about.homeIntro}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: '1rem',
+                    lineHeight: 1.8,
+                    color: brandColors.inkSoft,
+                    marginBottom: 2,
+                  }}
+                >
+                  {content.about.homePhilosophy}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -74,7 +85,7 @@ export default function Home() {
                     color: brandColors.inkSoft,
                   }}
                 >
-                  {content.about.philosophy}
+                  {content.about.homeSessions}
                 </Typography>
               </ScrollReveal>
             </Box>
@@ -112,177 +123,23 @@ export default function Home() {
               gap: 3,
             }}
           >
-            <ScrollReveal delay={0.1}>
-              <BenefitCard
-                title="Root Cause Focus"
-                description="Address underlying restrictions, not just symptoms"
-                accent="terracotta"
-              />
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <BenefitCard
-                title="Gentle Approach"
-                description="Sustainable healing without aggressive force"
-                accent="moss"
-              />
-            </ScrollReveal>
-            <ScrollReveal delay={0.3}>
-              <BenefitCard
-                title="Lasting Results"
-                description="Real recovery that improves over time"
-                accent="gold"
-              />
-            </ScrollReveal>
+            {content.home.whyMfrCards.map((card, idx) => (
+              <ScrollReveal key={card.title} delay={0.1 + idx * 0.1}>
+                <BenefitCard title={card.title} description={card.description} accent={card.accent} />
+              </ScrollReveal>
+            ))}
           </Box>
         </Container>
       </Box>
 
-      {/* Services Overview */}
-      <Box
-        sx={{
-          backgroundColor: brandColors.creamDeep,
-          padding: { xs: '4rem 2rem', md: '6rem 2rem' },
-        }}
-      >
-        <Container maxWidth="lg">
-          <ScrollReveal>
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: { xs: '2rem', md: '2.5rem' },
-                fontWeight: 400,
-                marginBottom: 4,
-                textAlign: 'center',
-                color: brandColors.ink,
-              }}
-            >
-              Services
-            </Typography>
-          </ScrollReveal>
-
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: '2fr 1fr' },
-              gap: 3,
-            }}
-          >
-            {/* Featured Service */}
-            <Box>
-              <ScrollReveal delay={0.1}>
-                <Card
-                  sx={{
-                    backgroundColor: brandColors.cream,
-                    borderLeft: `6px solid ${brandColors.terracotta}`,
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 20px 40px rgba(232, 148, 79, 0.15)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ padding: '2rem' }}>
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        fontSize: '1.75rem',
-                        fontWeight: 600,
-                        marginBottom: 1,
-                        color: brandColors.ink,
-                      }}
-                    >
-                      {content.services.featured.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: brandColors.terracotta,
-                        fontWeight: 600,
-                        marginBottom: 2,
-                      }}
-                    >
-                      FEATURED OFFERING
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: brandColors.inkSoft,
-                        lineHeight: 1.8,
-                        marginBottom: 2,
-                      }}
-                    >
-                      Gentle, sustained pressure techniques to release fascial restrictions and support deep healing.
-                    </Typography>
-                    <Box sx={{ marginTop: 2 }}>
-                      {content.services.featured.pricing.map((item, idx) => (
-                        <Typography key={idx} variant="body2" sx={{ marginBottom: 0.5 }}>
-                          {item.duration}: <strong>{item.price}</strong>
-                        </Typography>
-                      ))}
-                    </Box>
-                  </CardContent>
-                </Card>
-              </ScrollReveal>
-            </Box>
-
-            {/* Secondary Service */}
-            <Box>
-              <ScrollReveal delay={0.2}>
-                <Card
-                  sx={{
-                    backgroundColor: brandColors.cream,
-                    borderLeft: `6px solid ${brandColors.moss}`,
-                    height: '100%',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 20px 40px rgba(125, 168, 159, 0.15)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ padding: '2rem' }}>
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        fontSize: '1.75rem',
-                        fontWeight: 600,
-                        marginBottom: 1,
-                        color: brandColors.ink,
-                      }}
-                    >
-                      {content.services.secondary.title}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: brandColors.inkSoft,
-                        lineHeight: 1.8,
-                        marginBottom: 2,
-                      }}
-                    >
-                      Customized to your needs, incorporating various techniques for relaxation and relief.
-                    </Typography>
-                    <Box sx={{ marginTop: 2 }}>
-                      {content.services.secondary.pricing.map((item, idx) => (
-                        <Typography key={idx} variant="body2" sx={{ marginBottom: 0.5 }}>
-                          {item.duration}: <strong>{item.price}</strong>
-                        </Typography>
-                      ))}
-                    </Box>
-                  </CardContent>
-                </Card>
-              </ScrollReveal>
-            </Box>
-          </Box>
-        </Container>
-      </Box>
+      {/* Services Overview - Database Driven */}
+      <LandingPageServices />
 
       {/* Parallax Photo Section */}
       <ParallaxPhotoSection
-        imageUrl={getUnsplashImage('therapeuticHands', 'hero')}
-        title="Experience"
-        description="Step into a space designed for healing, comfort, and transformation. Every detail supports your journey toward lasting wellness."
+        title={content.home.experienceParallax.title}
+        titleEmphasis={content.home.experienceParallax.titleEmphasis}
+        description={content.home.experienceParallax.description}
       />
 
       {/* Testimonials Section */}
@@ -322,7 +179,7 @@ export default function Home() {
                 mx: 'auto',
               }}
             >
-              Hear from people who've experienced the healing power of Myofascial Release and therapeutic massage.
+              {content.home.testimonialsIntro}
             </Typography>
           </ScrollReveal>
 

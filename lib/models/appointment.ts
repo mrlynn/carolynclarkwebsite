@@ -39,6 +39,7 @@ export const BookingFormSchema = z.object({
     if (val instanceof Date) return val;
     return new Date(val);
   }),
+  duration_minutes: z.number().int().min(15, 'Duration must be at least 15 minutes'),
 });
 
 export type BookingForm = z.infer<typeof BookingFormSchema>;

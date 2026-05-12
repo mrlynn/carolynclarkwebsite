@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Box, Container, Typography, Button } from '@mui/material';
 import { brandColors } from '@/lib/theme';
+import { content } from '@/lib/content';
 import { useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { AnimatedHeroBackground } from './AnimatedHeroBackground';
@@ -34,7 +35,7 @@ export function HeroSection() {
         <motion.div style={{ y: contentY, opacity: contentOpacity }}>
           <Box sx={{ marginBottom: 3 }}>
             <AnimatedTitle
-              text="Healing that goes deeper"
+              text={content.hero.headline}
               highlightStart={12}
               highlightEnd={16}
               variant="h1"
@@ -57,9 +58,9 @@ export function HeroSection() {
                 lineHeight: 1.6,
               }}
             >
-              John F. Barnes Myofascial Release &{' '}
+              {content.hero.subheadingBeforeAccent}
               <span style={{ color: brandColors.terracotta, fontWeight: 600 }}>
-                Therapeutic Massage
+                {content.hero.subheadingAccent}
               </span>
             </Typography>
           </motion.div>
@@ -79,7 +80,7 @@ export function HeroSection() {
                 lineHeight: 1.8,
               }}
             >
-              Carolyn Clark is a Licensed Massage Therapist specializing in the John F. Barnes Myofascial Release Approach. Her work is rooted in a whole-person approach that recognizes the connection between the physical and emotional aspects of the body. Through individualized, hands-on care, she helps clients address pain, tension, and restriction rather than simply managing symptoms.
+              {content.hero.body}
             </Typography>
           </motion.div>
 
@@ -110,7 +111,7 @@ export function HeroSection() {
                 },
               }}
             >
-              Book a Session
+              {content.hero.ctaPrimary}
             </Button>
 
             <motion.div
@@ -139,13 +140,6 @@ export function HeroSection() {
                   },
                 }}
               >
-                <motion.span
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  style={{ fontSize: '1.2rem' }}
-                >
-                  ✓
-                </motion.span>
                 <Typography
                   variant="body2"
                   sx={{
@@ -153,7 +147,7 @@ export function HeroSection() {
                     fontWeight: 600,
                   }}
                 >
-                  Licensed Massage Therapist • By appointment
+                  {content.hero.credentialChip}
                 </Typography>
               </Box>
             </motion.div>

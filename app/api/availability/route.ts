@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/db';
-import { startOfDay, endOfDay } from 'date-fns';
 
 export async function GET(request: NextRequest) {
   try {
@@ -20,13 +19,19 @@ export async function GET(request: NextRequest) {
 
     const { db } = await connectToDatabase();
 
-    // Get all slots for the requested date
+    // Use UTC-based date range for consistency
+    const dayStart = new Date(dateObj);
+    dayStart.setUTCHours(0, 0, 0, 0);
+    const dayEnd = new Date(dateObj);
+    dayEnd.setUTCHours(23, 59, 59, 999);
+
+    // Get all slots for the requested date (using UTC)
     const allSlots = await db
       .collection('availability_slots')
       .find({
         date: {
-          $gte: startOfDay(dateObj),
-          $lte: endOfDay(dateObj),
+          $gte: dayStart,
+          $lte: dayEnd,
         },
         is_available: true,
         is_break: false,
@@ -34,17 +39,22 @@ export async function GET(request: NextRequest) {
       .sort({ time_start: 1 })
       .toArray();
 
-    // Get booked appointments for this date
+    // Get booked appointments for this date (using UTC)
+
     const bookedAppointments = await db
       .collection('appointments')
       .find({
         scheduled_at: {
-          $gte: startOfDay(dateObj),
-          $lt: endOfDay(dateObj),
+          $gte: dayStart,
+          $lte: dayEnd,
         },
         status: { $ne: 'cancelled' },
       })
       .toArray();
+
+    // Get buffer time from availability rules
+    const rules = await db.collection('availability_rules').find({}).toArray();
+    const bufferMinutes = rules.length > 0 ? (rules[0].buffer_minutes || 0) : 0;
 
     // Filter slots to only include ones that fit the service duration
     const availableSlots = allSlots
@@ -59,23 +69,37 @@ export async function GET(request: NextRequest) {
 
         const slotDurationMinutes = endHour * 60 + endMin - (startHour * 60 + startMin);
 
-        // Only include if slot is exactly the right duration
-        if (slotDurationMinutes !== duration) {
+        // Only include if slot is long enough for the requested duration
+        if (slotDurationMinutes < duration) {
           return false;
         }
 
-        // Check if slot is booked
+        // Check if slot is booked (check for overlap including buffer time)
         const isBooked = bookedAppointments.some((apt) => {
-          const aptDate = new Date(apt.scheduled_at);
-          const aptStartHour = aptDate.getHours();
-          const aptStartMin = aptDate.getMinutes();
-          const aptStart = `${String(aptStartHour).padStart(2, '0')}:${String(aptStartMin).padStart(2, '0')}`;
+          // slot.time_start is in LOCAL business time, so use setHours (not setUTCHours)
+          const slotDateTime = new Date(slot.date);
+          const [slotHour, slotMin] = slotStart.split(':').map(Number);
+          slotDateTime.setHours(slotHour, slotMin, 0, 0);
 
-          return aptStart === slotStart;
+          const slotEndDateTime = new Date(slotDateTime.getTime() + duration * 60000);
+
+          // Appointment blocked time includes buffer before and after
+          const aptStart = new Date(new Date(apt.scheduled_at).getTime() - bufferMinutes * 60000);
+          const aptEnd = new Date(new Date(apt.scheduled_at).getTime() + (apt.duration_minutes + bufferMinutes) * 60000);
+
+          // Check for time overlap
+          return slotDateTime < aptEnd && slotEndDateTime > aptStart;
         });
 
         return !isBooked;
-      });
+      })
+      .reduce((unique: typeof allSlots, slot) => {
+        // Deduplicate: keep only the first slot for each time_start
+        if (!unique.find(s => s.time_start === slot.time_start)) {
+          unique.push(slot);
+        }
+        return unique;
+      }, []);
 
     return NextResponse.json(availableSlots);
   } catch (error) {

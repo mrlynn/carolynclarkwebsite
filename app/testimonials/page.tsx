@@ -14,6 +14,7 @@ import { Footer } from '@/components/Footer';
 import TestimonialCard from '@/components/TestimonialCard';
 import TestimonialModal from '@/components/TestimonialModal';
 import { Testimonial } from '@/lib/models/testimonial';
+import { content } from '@/lib/content';
 
 export default function TestimonialsPage() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
@@ -80,7 +81,7 @@ export default function TestimonialsPage() {
                 mb: 4,
               }}
             >
-              Hear from people who've experienced the healing power of Myofascial Release and therapeutic massage.
+              {content.home.testimonialsIntro}
             </Typography>
             <Button
               variant="contained"

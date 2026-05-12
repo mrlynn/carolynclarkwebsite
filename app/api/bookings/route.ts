@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { serviceId, clientName, clientEmail, clientPhone, clientNotes, scheduledAt } = parsed.data;
+    const { serviceId, clientName, clientEmail, clientPhone, clientNotes, scheduledAt, duration_minutes } = parsed.data;
     const { db } = await connectToDatabase();
 
     // Get service details
@@ -28,6 +28,15 @@ export async function POST(request: NextRequest) {
 
     if (!service) {
       return NextResponse.json({ error: 'Service not found' }, { status: 404 });
+    }
+
+    // Look up price for the selected duration
+    const durationOption = service.durations.find((d: any) => d.durationMinutes === duration_minutes);
+    if (!durationOption) {
+      return NextResponse.json(
+        { error: 'Selected duration is not available for this service' },
+        { status: 400 }
+      );
     }
 
     // Check if slot is still available
@@ -52,8 +61,8 @@ export async function POST(request: NextRequest) {
       client_phone: clientPhone,
       client_notes: clientNotes || '',
       scheduled_at: new Date(scheduledAt),
-      duration_minutes: service.duration_minutes,
-      total_price: service.price,
+      duration_minutes: duration_minutes,
+      total_price: durationOption.price,
       status: 'confirmed',
       confirmation_sent: false,
       reminder_sent: false,
@@ -71,8 +80,8 @@ export async function POST(request: NextRequest) {
       clientName,
       serviceName: service.name,
       scheduledAt: new Date(scheduledAt),
-      duration: service.duration_minutes,
-      price: service.price,
+      duration: duration_minutes,
+      price: durationOption.price,
       cancelLink,
     });
 
@@ -102,8 +111,8 @@ export async function POST(request: NextRequest) {
       clientNotes,
       serviceName: service.name,
       scheduledAt: new Date(scheduledAt),
-      duration: service.duration_minutes,
-      price: service.price,
+      duration: duration_minutes,
+      price: durationOption.price,
     });
 
     await sendEmail({

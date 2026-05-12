@@ -2,6 +2,7 @@
 
 import { Box, Container, Typography } from '@mui/material';
 import { brandColors } from '@/lib/theme';
+import { content } from '@/lib/content';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
 import { GradientBackground } from '@/components/GradientBackground';
@@ -77,7 +78,7 @@ export default function AboutPage() {
                     marginBottom: 2,
                   }}
                 >
-                  Holding Space for Healing
+                  {content.about.practiceSectionTitle}
                 </Typography>
               </ScrollReveal>
 
@@ -91,7 +92,7 @@ export default function AboutPage() {
                     marginBottom: 2,
                   }}
                 >
-                  My approach is rooted in two core principles: holding space for clients to feel safe and comfortable, and addressing the root causes of pain rather than just offering temporary relief.
+                  {content.about.practiceSectionLead}
                 </Typography>
               </ScrollReveal>
 
@@ -104,7 +105,7 @@ export default function AboutPage() {
                     color: brandColors.inkSoft,
                   }}
                 >
-                  Every body has its own wisdom about healing. I listen carefully, work patiently, and create an environment where true recovery can happen. My clients are people ready to take an active role in their own care.
+                  {content.about.practiceSectionClose}
                 </Typography>
               </ScrollReveal>
             </Box>
@@ -206,35 +207,28 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 2,
-                marginBottom: 3,
-                alignItems: 'flex-start',
-              }}
-            >
               <Box
                 sx={{
-                  fontSize: '2rem',
-                  color: brandColors.terracotta,
-                  marginTop: '0.5rem',
+                  display: 'flex',
+                  gap: 2,
+                  marginBottom: 3,
+                  alignItems: 'flex-start',
+                  borderLeft: `4px solid ${brandColors.terracotta}`,
+                  paddingLeft: 2,
                 }}
               >
-                ✓
-              </Box>
-              <Box>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    fontSize: '1.25rem',
-                    fontWeight: 600,
-                    color: brandColors.ink,
-                    marginBottom: 0.5,
-                  }}
-                >
-                  Licensed Massage Therapist
-                </Typography>
+                <Box>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: '1.25rem',
+                      fontWeight: 600,
+                      color: brandColors.ink,
+                      marginBottom: 0.5,
+                    }}
+                  >
+                    Licensed Massage Therapist
+                  </Typography>
                 <Typography
                   variant="body2"
                   sx={{
@@ -248,35 +242,28 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 2,
-                marginBottom: 3,
-                alignItems: 'flex-start',
-              }}
-            >
               <Box
                 sx={{
-                  fontSize: '2rem',
-                  color: brandColors.terracotta,
-                  marginTop: '0.5rem',
+                  display: 'flex',
+                  gap: 2,
+                  marginBottom: 3,
+                  alignItems: 'flex-start',
+                  borderLeft: `4px solid ${brandColors.terracotta}`,
+                  paddingLeft: 2,
                 }}
               >
-                ✓
-              </Box>
-              <Box>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    fontSize: '1.25rem',
-                    fontWeight: 600,
-                    color: brandColors.ink,
-                    marginBottom: 0.5,
-                  }}
-                >
-                  John F. Barnes Myofascial Release Trained
-                </Typography>
+                <Box>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontSize: '1.25rem',
+                      fontWeight: 600,
+                      color: brandColors.ink,
+                      marginBottom: 0.5,
+                    }}
+                  >
+                    John F. Barnes Myofascial Release Trained
+                  </Typography>
                 <Typography
                   variant="body2"
                   sx={{

@@ -32,7 +32,7 @@ interface Appointment {
   client_phone: string;
   service_name: string;
   scheduled_at: string;
-  total_price: number;
+  total_price: number | null;
   status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
   created_at: string;
 }
@@ -243,7 +243,7 @@ export default function AppointmentsPage() {
                       }}
                     />
                   </TableCell>
-                  <TableCell>${appointment.total_price.toFixed(2)}</TableCell>
+                  <TableCell>${appointment.total_price ? appointment.total_price.toFixed(2) : '—'}</TableCell>
                   <TableCell align="right">
                     <Button
                       size="small"

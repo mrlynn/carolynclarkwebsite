@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Box, Container, Typography, Button } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { ScrollReveal } from '@/components/ScrollReveal';
@@ -9,8 +10,31 @@ import { BenefitCard } from '@/components/BenefitCard';
 import { FasciaIllustration } from '@/components/FasciaIllustration';
 import { Navigation } from '@/components/Navigation';
 import { ParallaxGradientSection } from '@/components/ParallaxGradientSection';
+import { content } from '@/lib/content';
 
 export default function MFRPage() {
+  const [mfrPricing, setMFRPricing] = useState<Array<{ duration: string; price: string }>>([]);
+
+  useEffect(() => {
+    const fetchMFRServices = async () => {
+      try {
+        const response = await fetch('/api/services');
+        const services = await response.json();
+        const mfrServices = services
+          .filter((s: any) => s.name === 'Myofascial Release')
+          .sort((a: any, b: any) => a.duration_minutes - b.duration_minutes)
+          .map((s: any) => ({
+            duration: `${s.duration_minutes} Minutes`,
+            price: `$${s.price}`,
+          }));
+        setMFRPricing(mfrServices);
+      } catch (error) {
+        console.error('Failed to fetch MFR pricing:', error);
+      }
+    };
+
+    fetchMFRServices();
+  }, []);
   return (
     <Box>
       <Navigation />
@@ -50,7 +74,7 @@ export default function MFRPage() {
                 lineHeight: 1.8,
               }}
             >
-              Addressing root causes instead of managing symptoms. Gentle, sustained pressure techniques to release fascial restrictions and support lasting healing.
+              {content.services.featured.heroLead}
             </Typography>
           </ScrollReveal>
         </Container>
@@ -349,16 +373,6 @@ export default function MFRPage() {
                     fontSize: '1.05rem',
                     lineHeight: 1.8,
                     color: brandColors.inkSoft,
-                    paddingLeft: '2rem',
-                    position: 'relative',
-                    '&:before': {
-                      content: '"◆"',
-                      position: 'absolute',
-                      left: 0,
-                      color: brandColors.moss,
-                      fontSize: '0.8rem',
-                      marginTop: '0.3rem',
-                    },
                   }}
                 >
                   {condition}
@@ -481,6 +495,65 @@ export default function MFRPage() {
               </ScrollReveal>
             ))}
           </Box>
+        </Container>
+      </Box>
+
+      {/* Pricing */}
+      <Box sx={{ padding: { xs: '3rem 2rem', md: '5rem 2rem' } }}>
+        <Container maxWidth="lg" sx={{ maxWidth: '800px' }}>
+          <ScrollReveal>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: '2rem',
+                fontWeight: 400,
+                color: brandColors.ink,
+                marginBottom: 3,
+                textAlign: 'center',
+              }}
+            >
+              Pricing
+            </Typography>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+                gap: 2,
+              }}
+            >
+              {mfrPricing.map((item, idx) => (
+                <Box
+                  key={idx}
+                  sx={{
+                    padding: '2rem',
+                    backgroundColor: brandColors.creamDeep,
+                    borderRadius: '12px',
+                    textAlign: 'center',
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: '1.1rem',
+                      fontWeight: 600,
+                      color: brandColors.ink,
+                      marginBottom: 1,
+                    }}
+                  >
+                    {item.duration}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: '2rem',
+                      fontWeight: 600,
+                      color: brandColors.terracotta,
+                    }}
+                  >
+                    {item.price}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+          </ScrollReveal>
         </Container>
       </Box>
 

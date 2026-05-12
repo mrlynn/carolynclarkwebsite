@@ -1,12 +1,21 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/db';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    const { searchParams } = new URL(request.url);
+    const featured = searchParams.get('featured') === 'true';
+
     const { db } = await connectToDatabase();
+
+    const filter: Record<string, any> = { status: 'active' };
+    if (featured) {
+      filter.featured = true;
+    }
+
     const services = await db
       .collection('services')
-      .find({ active: true })
+      .find(filter)
       .toArray();
 
     return NextResponse.json(services);

@@ -2,13 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { Box } from '@mui/material';
-import Image from 'next/image';
 import { brandColors } from '@/lib/theme';
-import { getUnsplashImage } from '@/lib/unsplash-photos';
 
+/**
+ * Non-photographic hero backdrop — soft palette washes, grain, and motion
+ * (per client feedback: no stock photography on the marketing site).
+ */
 export function AnimatedHeroBackground() {
-  const heroPhoto = getUnsplashImage('landingHeroAtmosphere', 'hero');
-
   return (
     <Box
       sx={{
@@ -18,29 +18,15 @@ export function AnimatedHeroBackground() {
         zIndex: 0,
       }}
     >
-      {/* Photography base — warm, editorial wellness (tinted by overlays below) */}
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
           zIndex: 0,
+          background: `linear-gradient(145deg, ${brandColors.cream} 0%, ${brandColors.creamDeep} 42%, ${brandColors.moss}14 100%)`,
         }}
-      >
-        <Image
-          src={heroPhoto}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          quality={85}
-          style={{
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
-      </Box>
+      />
 
-      {/* Animated gradient veil — keeps text contrast while photo reads through */}
       <motion.div
         animate={{
           background: [
@@ -55,10 +41,11 @@ export function AnimatedHeroBackground() {
           position: 'absolute',
           inset: 0,
           zIndex: 1,
+          opacity: 0.35,
+          mixBlendMode: 'multiply',
         }}
       />
 
-      {/* Floating blob 1 - Primary accent */}
       <motion.div
         animate={{
           x: [0, 100, 0],
@@ -76,14 +63,13 @@ export function AnimatedHeroBackground() {
           right: '-5%',
           width: '400px',
           height: '400px',
-          background: `radial-gradient(circle, ${brandColors.terracotta}30 0%, ${brandColors.terracotta}10 70%, transparent 100%)`,
+          background: `radial-gradient(circle, ${brandColors.terracotta}28 0%, ${brandColors.terracotta}10 70%, transparent 100%)`,
           borderRadius: '50%',
           filter: 'blur(60px)',
           zIndex: 2,
         }}
       />
 
-      {/* Floating blob 2 - Secondary accent */}
       <motion.div
         animate={{
           x: [0, -120, 0],
@@ -102,14 +88,13 @@ export function AnimatedHeroBackground() {
           left: '-3%',
           width: '450px',
           height: '450px',
-          background: `radial-gradient(circle, ${brandColors.moss}25 0%, ${brandColors.moss}8 70%, transparent 100%)`,
+          background: `radial-gradient(circle, ${brandColors.moss}22 0%, ${brandColors.moss}8 70%, transparent 100%)`,
           borderRadius: '50%',
           filter: 'blur(70px)',
           zIndex: 2,
         }}
       />
 
-      {/* Floating blob 3 - Gold accent */}
       <motion.div
         animate={{
           x: [0, 80, -60, 0],
@@ -128,38 +113,55 @@ export function AnimatedHeroBackground() {
           right: '10%',
           width: '350px',
           height: '350px',
-          background: `radial-gradient(circle, ${brandColors.gold}20 0%, ${brandColors.gold}5 70%, transparent 100%)`,
+          background: `radial-gradient(circle, ${brandColors.gold}18 0%, ${brandColors.gold}5 70%, transparent 100%)`,
           borderRadius: '50%',
           filter: 'blur(80px)',
           zIndex: 2,
         }}
       />
 
-      {/* Flowing lines animation */}
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 3,
+          pointerEvents: 'none',
+          opacity: 0.45,
+          backgroundImage: `
+            repeating-linear-gradient(
+              90deg,
+              transparent,
+              transparent 2px,
+              rgba(0, 0, 0, 0.02) 2px,
+              rgba(0, 0, 0, 0.02) 4px
+            )
+          `,
+        }}
+      />
+
       <svg
         style={{
           position: 'absolute',
           inset: 0,
           width: '100%',
           height: '100%',
-          opacity: 0.15,
-          zIndex: 2,
+          opacity: 0.12,
+          zIndex: 3,
         }}
         viewBox="0 0 1200 600"
         preserveAspectRatio="none"
       >
         <defs>
-          <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="heroLineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor={brandColors.terracotta} />
             <stop offset="50%" stopColor={brandColors.moss} />
             <stop offset="100%" stopColor={brandColors.gold} />
           </linearGradient>
         </defs>
 
-        {/* Animated flowing paths */}
         <motion.path
           d="M 0 100 Q 300 50, 600 100 T 1200 100"
-          stroke="url(#lineGradient)"
+          stroke="url(#heroLineGradient)"
           strokeWidth="3"
           fill="none"
           animate={{ d: 'M 0 120 Q 300 30, 600 120 T 1200 100' }}
@@ -167,19 +169,19 @@ export function AnimatedHeroBackground() {
         />
         <motion.path
           d="M 0 200 Q 300 250, 600 200 T 1200 200"
-          stroke="url(#lineGradient)"
+          stroke="url(#heroLineGradient)"
           strokeWidth="2"
           fill="none"
-          opacity="0.6"
+          opacity={0.6}
           animate={{ d: 'M 0 180 Q 300 270, 600 180 T 1200 200' }}
           transition={{ duration: 10, repeat: Infinity, repeatType: 'reverse', delay: 1 }}
         />
         <motion.path
           d="M 0 300 Q 300 350, 600 300 T 1200 300"
-          stroke="url(#lineGradient)"
+          stroke="url(#heroLineGradient)"
           strokeWidth="2"
           fill="none"
-          opacity="0.4"
+          opacity={0.4}
           animate={{ d: 'M 0 320 Q 300 330, 600 320 T 1200 300' }}
           transition={{ duration: 12, repeat: Infinity, repeatType: 'reverse', delay: 2 }}
         />

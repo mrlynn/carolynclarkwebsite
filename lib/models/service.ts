@@ -1,30 +1,25 @@
 import { z } from 'zod';
 import { ObjectId } from 'mongodb';
 
+const DurationOptionSchema = z.object({
+  durationMinutes: z.number().int().min(15).max(300),
+  price: z.number().positive(),
+});
+
 export const ServiceSchema = z.object({
   _id: z.instanceof(ObjectId).optional(),
-  name: z.string().min(1),
-  description: z.string(),
-  duration_minutes: z.number().int().min(15),
-  price: z.number().positive(),
-  active: z.boolean().default(true),
-  created_at: z.date().default(() => new Date()),
-  updated_at: z.date().default(() => new Date()),
+  name: z.string().min(1).max(100),
+  description: z.string().min(1),
+  category: z.enum(['massage', 'therapy', 'wellness']),
+  slug: z.string().min(1).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  status: z.enum(['active', 'inactive']).default('active'),
+  featured: z.boolean().default(false),
+  durations: z.array(DurationOptionSchema).min(1),
+  createdAt: z.date().default(() => new Date()),
+  updatedAt: z.date().default(() => new Date()),
+  createdBy: z.instanceof(ObjectId).optional(),
+  updatedBy: z.instanceof(ObjectId).optional(),
 });
 
 export type Service = z.infer<typeof ServiceSchema>;
-
-export const SERVICES = {
-  MFR: {
-    name: 'Myofascial Release',
-    description: 'John F. Barnes Myofascial Release technique for pain relief and lasting change',
-    duration_minutes: 60,
-    price: 125,
-  },
-  MASSAGE: {
-    name: 'Therapeutic Massage',
-    description: 'Therapeutic massage to promote relaxation and healing',
-    duration_minutes: 90,
-    price: 150,
-  },
-};
+export type DurationOption = z.infer<typeof DurationOptionSchema>;

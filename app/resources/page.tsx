@@ -50,8 +50,7 @@ function ResourcesContent() {
                 lineHeight: 1.7,
               }}
             >
-              Practical guides to support your healing journey. Download a free
-              guide and start feeling better today.
+              Practical guides for self-care between sessions. Download a free guide and take the next step when you are ready.
             </Typography>
           </ScrollReveal>
         </Container>

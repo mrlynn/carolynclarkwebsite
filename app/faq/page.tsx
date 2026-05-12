@@ -41,7 +41,7 @@ const faqs = [
   {
     question: 'Do you offer gift certificates?',
     answer:
-      'Gift certificates are available by contacting me directly. They make thoughtful gifts for anyone interested in healing and wellness.',
+      'Gift certificates are available by contacting me directly. They can be a thoughtful option for someone interested in massage or myofascial release.',
   },
   {
     question: 'What if I have questions before booking?',
