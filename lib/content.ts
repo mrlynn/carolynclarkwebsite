@@ -15,7 +15,7 @@ export const content = {
 
   about: {
     intro:
-      "I help people who feel like they've tried everything - people who are ready to take on a more active role in their own healing journey.",
+      "I help people who feel like they've tried everything and are ready to try a different approach.",
     philosophy:
       'My approach centers on two core principles: holding space for clients to feel safe and comfortable, and addressing the root causes of pain rather than just offering temporary relief.',
     credentials:
@@ -57,7 +57,7 @@ Sessions may also include education, self-treatment techniques, and home care re
   ],
 
   booking: {
-    heading: 'Ready to begin your healing journey?',
+    heading: 'Ready to schedule?',
     subheading: 'Contact me to schedule an appointment.',
     phone: '+1 (484) 941-2718',
     email: 'carolyn@example.com',

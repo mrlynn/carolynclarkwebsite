@@ -113,7 +113,7 @@ export default function MFRPage() {
                     marginBottom: 2,
                   }}
                 >
-                  Fascia is a continuous web of connective tissue that surrounds and supports every structure in the body. It connects muscles, bones, organs, and nerves, creating an integrated system of communication and support.
+                  Fascia is a continuous web of connective tissue that surrounds and supports every muscle, bone, nerve, blood vessel, and organ in the body. It acts as the body's protective support system and responds during times of injury, surgery, inflammation, stress, or emotional trauma.
                 </Typography>
                 <Typography
                   variant="body1"
@@ -123,7 +123,7 @@ export default function MFRPage() {
                     color: brandColors.inkSoft,
                   }}
                 >
-                  This tissue responds to injury, stress, and trauma by tightening and restricting as a form of protection. Over time, these restrictions create pressure on pain-sensitive structures, contributing to chronic pain and limited mobility.
+                  When the fascial system becomes restricted as a result of these experiences, it creates tension and compression throughout the body that can contribute to chronic pain, postural imbalance, limited mobility, and a wide range of other symptoms.
                 </Typography>
               </Box>
             </ScrollReveal>
@@ -176,7 +176,7 @@ export default function MFRPage() {
                     color: brandColors.inkSoft,
                   }}
                 >
-                  The John F. Barnes Myofascial Release Approach uses <strong>gentle, sustained pressure</strong> to engage the fascial system and allow areas of restriction to gradually soften and release without force. Rather than working aggressively against the body, this approach emphasizes careful listening, patience, and working with the body's natural healing processes.
+                  The John F. Barnes Myofascial Release Approach uses gentle, sustained pressure to engage the fascial system and allow restricted tissue to soften and release naturally, without force.
                 </Typography>
               </Box>
             </ScrollReveal>
@@ -200,7 +200,31 @@ export default function MFRPage() {
                     color: brandColors.inkSoft,
                   }}
                 >
-                  This technique respects the body's wisdom. By applying consistent, mindful pressure over time, we allow the fascia to respond and release. The body's intelligence guides the process—we don't force a result, but rather create the conditions for healing to occur.
+                  By working with the body instead of against it, this approach supports lasting change through the mind-body connection while addressing the underlying restrictions contributing to pain and dysfunction rather than simply managing symptoms temporarily.
+                </Typography>
+              </Box>
+            </ScrollReveal>
+          </Box>
+
+          <Box sx={{ marginBottom: 4 }}>
+            <ScrollReveal delay={0.2}>
+              <Box
+                sx={{
+                  padding: '3rem 2rem',
+                  backgroundColor: brandColors.cream,
+                  borderRadius: '16px',
+                  border: `2px solid ${brandColors.moss}30`,
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: '1.1rem',
+                    lineHeight: 2,
+                    color: brandColors.inkSoft,
+                  }}
+                >
+                  Treatment may also include self-treatment instruction and home care recommendations to support continued progress between sessions.
                 </Typography>
               </Box>
             </ScrollReveal>
@@ -236,7 +260,6 @@ export default function MFRPage() {
           >
             <ScrollReveal delay={0.1}>
               <BenefitCard
-                icon="😌"
                 title="Pain Reduction"
                 description="Release fascial restrictions that contribute to chronic pain and discomfort."
                 accent="terracotta"
@@ -245,7 +268,6 @@ export default function MFRPage() {
 
             <ScrollReveal delay={0.2}>
               <BenefitCard
-                icon="🧘"
                 title="Better Mobility"
                 description="Improved movement range, flexibility, and reduced tension patterns."
                 accent="moss"
@@ -254,7 +276,6 @@ export default function MFRPage() {
 
             <ScrollReveal delay={0.3}>
               <BenefitCard
-                icon="🧠"
                 title="Nervous System Healing"
                 description="Regulation and stress relief as trauma and tension release."
                 accent="gold"
@@ -263,7 +284,6 @@ export default function MFRPage() {
 
             <ScrollReveal delay={0.4}>
               <BenefitCard
-                icon="⚡"
                 title="Faster Recovery"
                 description="Support for healing from injury, surgery, or intensive activity."
                 accent="terracotta"
@@ -272,7 +292,6 @@ export default function MFRPage() {
 
             <ScrollReveal delay={0.5}>
               <BenefitCard
-                icon="🏃"
                 title="Athletic Performance"
                 description="Enhanced flexibility and reduced restrictions for optimal movement."
                 accent="moss"
@@ -281,12 +300,80 @@ export default function MFRPage() {
 
             <ScrollReveal delay={0.6}>
               <BenefitCard
-                icon="💫"
                 title="Emotional Release"
                 description="Support for trauma recovery and emotional processing."
                 accent="gold"
               />
             </ScrollReveal>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Commonly Addressed Conditions */}
+      <Box sx={{ padding: { xs: '3rem 2rem', md: '5rem 2rem' } }}>
+        <Container maxWidth="lg">
+          <ScrollReveal>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: '2rem',
+                fontWeight: 400,
+                color: brandColors.ink,
+                marginBottom: 4,
+                textAlign: 'center',
+              }}
+            >
+              Commonly Addressed Conditions
+            </Typography>
+          </ScrollReveal>
+
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+              gap: 2,
+            }}
+          >
+            {[
+              'Neck and back pain',
+              'TMJ',
+              'Frozen shoulder',
+              'Carpal tunnel syndrome',
+              'Thoracic outlet syndrome',
+              'Fibromyalgia',
+              'Whiplash',
+              'Anxiety / depression',
+              'Emotional trauma',
+              'Scoliosis',
+              'C-section scarring',
+              'Pelvic and menstrual pain',
+              'Sports injuries',
+              'Post-mastectomy scarring',
+              'Plantar fasciitis',
+              'Sciatica',
+            ].map((condition, idx) => (
+              <ScrollReveal key={idx} delay={idx * 0.05}>
+                <Typography
+                  sx={{
+                    fontSize: '1.05rem',
+                    lineHeight: 1.8,
+                    color: brandColors.inkSoft,
+                    paddingLeft: '2rem',
+                    position: 'relative',
+                    '&:before': {
+                      content: '"◆"',
+                      position: 'absolute',
+                      left: 0,
+                      color: brandColors.moss,
+                      fontSize: '0.8rem',
+                      marginTop: '0.3rem',
+                    },
+                  }}
+                >
+                  {condition}
+                </Typography>
+              </ScrollReveal>
+            ))}
           </Box>
         </Container>
       </Box>
@@ -367,10 +454,10 @@ export default function MFRPage() {
             }}
           >
             {[
-              { emoji: '📋', title: 'Assessment', desc: 'Discussion of your goals and health history' },
-              { emoji: '🙌', title: 'Hands-On Work', desc: 'Gentle, sustained pressure on restricted areas' },
-              { emoji: '📚', title: 'Education', desc: 'Understanding your restrictions and healing' },
-              { emoji: '🏠', title: 'Home Care', desc: 'Self-treatment techniques for continued progress' },
+              { title: 'Assessment', desc: 'Discussion of your goals and health history' },
+              { title: 'Hands-On Work', desc: 'Gentle, sustained pressure on restricted areas' },
+              { title: 'Education', desc: 'Understanding your restrictions and healing' },
+              { title: 'Home Care', desc: 'Self-treatment techniques for continued progress' },
             ].map((item, idx) => (
               <ScrollReveal key={idx} delay={idx * 0.1}>
                 <Box
@@ -381,7 +468,6 @@ export default function MFRPage() {
                     border: `2px solid ${brandColors.gold}30`,
                   }}
                 >
-                  <Box sx={{ fontSize: '2.5rem', marginBottom: 1 }}>{item.emoji}</Box>
                   <Typography
                     sx={{
                       fontSize: '1.2rem',
@@ -439,7 +525,7 @@ export default function MFRPage() {
                 marginBottom: 3,
               }}
             >
-              Schedule your first session and begin your healing journey.
+              Schedule your first session today.
             </Typography>
             <Button
               variant="contained"

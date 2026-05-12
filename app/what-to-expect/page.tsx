@@ -89,7 +89,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      🕐
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -134,7 +134,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      👕
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -179,7 +179,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      💧
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -224,7 +224,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      ✓
+                      �
                     </Box>
                     <Box>
                       <Typography
@@ -288,7 +288,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      📋
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -333,7 +333,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      🙌
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -388,7 +388,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      💫
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -452,7 +452,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      💬
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -516,7 +516,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      🧘
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -561,7 +561,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      💧
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -606,7 +606,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      🛁
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -661,7 +661,7 @@ export default function WhatToExpectPage() {
                         textAlign: 'center',
                       }}
                     >
-                      📅
+                      
                     </Box>
                     <Box>
                       <Typography
@@ -688,7 +688,7 @@ export default function WhatToExpectPage() {
                             paddingLeft: '1.5rem',
                             position: 'relative',
                             '&:before': {
-                              content: '"→"',
+                              content: '"�"',
                               position: 'absolute',
                               left: 0,
                               color: brandColors.terracotta,
@@ -746,7 +746,7 @@ export default function WhatToExpectPage() {
                     paddingLeft: '1.5rem',
                     position: 'relative',
                     '&:before': {
-                      content: '"✓"',
+                      content: '"�"',
                       position: 'absolute',
                       left: 0,
                       color: brandColors.moss,

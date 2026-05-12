@@ -114,7 +114,6 @@ export default function Home() {
           >
             <ScrollReveal delay={0.1}>
               <BenefitCard
-                icon="📍"
                 title="Root Cause Focus"
                 description="Address underlying restrictions, not just symptoms"
                 accent="terracotta"
@@ -122,7 +121,6 @@ export default function Home() {
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <BenefitCard
-                icon="🤝"
                 title="Gentle Approach"
                 description="Sustainable healing without aggressive force"
                 accent="moss"
@@ -130,7 +128,6 @@ export default function Home() {
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <BenefitCard
-                icon="⏱️"
                 title="Lasting Results"
                 description="Real recovery that improves over time"
                 accent="gold"

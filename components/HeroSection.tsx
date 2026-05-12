@@ -49,7 +49,7 @@ export function HeroSection() {
             <Typography
               variant="h2"
               sx={{
-                fontSize: { xs: '1.25rem', md: '1.75rem' },
+                fontSize: { xs: '1.1rem', md: '1.5rem' },
                 fontWeight: 400,
                 color: brandColors.inkSoft,
                 marginBottom: 4,
@@ -57,10 +57,29 @@ export function HeroSection() {
                 lineHeight: 1.6,
               }}
             >
-              John F. Barnes Myofascial Release for{' '}
+              John F. Barnes Myofascial Release &{' '}
               <span style={{ color: brandColors.terracotta, fontWeight: 600 }}>
-                pain relief and lasting change
+                Therapeutic Massage
               </span>
+            </Typography>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: { xs: '1rem', md: '1.1rem' },
+                color: brandColors.inkSoft,
+                marginBottom: 4,
+                maxWidth: '700px',
+                lineHeight: 1.8,
+              }}
+            >
+              Carolyn Clark is a Licensed Massage Therapist specializing in the John F. Barnes Myofascial Release Approach. Her work is rooted in a whole-person approach that recognizes the connection between the physical and emotional aspects of the body. Through individualized, hands-on care, she helps clients address pain, tension, and restriction rather than simply managing symptoms.
             </Typography>
           </motion.div>
 
@@ -134,7 +153,7 @@ export function HeroSection() {
                     fontWeight: 600,
                   }}
                 >
-                  Licensed MT • By appointment
+                  Licensed Massage Therapist • By appointment
                 </Typography>
               </Box>
             </motion.div>

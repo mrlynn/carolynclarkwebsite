@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 
 interface BenefitCardProps {
-  icon: string;
+  icon?: string;
   title: string;
   description: string;
   accent?: 'terracotta' | 'moss' | 'gold';
@@ -32,17 +32,19 @@ export function BenefitCard({
         },
       }}
     >
-      <Box
-        sx={{
-          fontSize: '3rem',
-          marginBottom: 1.5,
-          height: '3rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        {icon}
-      </Box>
+      {icon && (
+        <Box
+          sx={{
+            fontSize: '3rem',
+            marginBottom: 1.5,
+            height: '3rem',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          {icon}
+        </Box>
+      )}
       <Typography
         sx={{
           fontSize: '1.2rem',

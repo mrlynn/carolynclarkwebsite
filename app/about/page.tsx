@@ -109,7 +109,7 @@ export default function AboutPage() {
                     color: brandColors.inkSoft,
                   }}
                 >
-                  Every body has its own wisdom about healing. I listen carefully, work patiently, and create an environment where true recovery can happen. My clients are people ready to take an active role in their healing journey.
+                  Every body has its own wisdom about healing. I listen carefully, work patiently, and create an environment where true recovery can happen. My clients are people ready to take an active role in their own care.
                 </Typography>
               </ScrollReveal>
             </Box>
@@ -136,7 +136,7 @@ export default function AboutPage() {
                 textAlign: 'center',
               }}
             >
-              My Philosophy
+              A Whole-Person Approach to Care
             </Typography>
           </ScrollReveal>
 
@@ -150,7 +150,7 @@ export default function AboutPage() {
                 marginBottom: 2,
               }}
             >
-              I believe that healing isn't just physical—it's a conversation between therapist and client, between hands and body, between present moment and past experiences. When you come in, you're not just receiving treatment; you're beginning a partnership in your own recovery.
+              Carolyn works with clients experiencing chronic pain, headaches, TMJ dysfunction, postural tension, and those recovering from injury, surgery, or trauma.
             </Typography>
           </ScrollReveal>
 
@@ -164,31 +164,21 @@ export default function AboutPage() {
                 marginBottom: 2,
               }}
             >
-              Pain often isn't random. It's your body's intelligent way of communicating that something needs attention. My work focuses on listening to that communication and addressing what's truly going on beneath the surface.
+              Her approach is rooted in the understanding that the body responds to and carries our lived experiences, and that lasting change comes from addressing the underlying restrictions contributing to pain and dysfunction rather than simply managing symptoms temporarily.
             </Typography>
           </ScrollReveal>
 
           <ScrollReveal delay={0.3}>
-            <Box
+            <Typography
+              variant="body1"
               sx={{
-                padding: '2rem',
-                backgroundColor: brandColors.cream,
-                borderLeft: `6px solid ${brandColors.moss}`,
-                borderRadius: '8px',
+                fontSize: '1.1rem',
+                lineHeight: 2,
+                color: brandColors.inkSoft,
               }}
             >
-              <Typography
-                variant="body1"
-                sx={{
-                  fontSize: '1.1rem',
-                  lineHeight: 2,
-                  color: brandColors.inkSoft,
-                  fontStyle: 'italic',
-                }}
-              >
-                "I help people who feel like they've tried everything—people who are ready to take on a more active role in their healing journey."
-              </Typography>
-            </Box>
+              Sessions are individualized and guided by presence, patience, and careful listening to the body to support greater ease, mobility, and connection within the body.
+            </Typography>
           </ScrollReveal>
         </Container>
       </Box>

@@ -91,7 +91,7 @@ export default function MassagePage() {
                   color: brandColors.inkSoft,
                 }}
               >
-                Each therapeutic massage session is tailored to your individual needs and designed to support pain relief, improved mobility, relaxation, and overall well-being. Depending on your goals, sessions may incorporate various evidence-based techniques to address your specific concerns.
+                Therapeutic massage sessions are individualized to each client's needs and may include a combination of deep tissue work, myofascial release, Swedish massage, assisted stretching, trigger point therapy and energy work to relieve pain and tension, increase mobility and promote overall relaxation and well-being.
               </Typography>
             </Box>
           </ScrollReveal>
