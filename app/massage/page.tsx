@@ -10,22 +10,32 @@ import { Navigation } from '@/components/Navigation';
 import { ParallaxGradientSection } from '@/components/ParallaxGradientSection';
 import { content } from '@/lib/content';
 
+interface PricingItem {
+  duration: string;
+  price: string;
+}
+
 export default function MassagePage() {
-  const [massagePricing, setMassagePricing] = useState<Array<{ duration: string; price: string }>>([]);
+  const [massagePricing, setMassagePricing] = useState<PricingItem[]>([]);
 
   useEffect(() => {
     const fetchMassageServices = async () => {
       try {
         const response = await fetch('/api/services');
+        if (!response.ok) throw new Error('Failed to fetch services');
+
         const services = await response.json();
-        const massageServices = services
-          .filter((s: any) => s.name === 'Therapeutic Massage')
-          .sort((a: any, b: any) => a.duration_minutes - b.duration_minutes)
-          .map((s: any) => ({
-            duration: `${s.duration_minutes} Minutes`,
-            price: `$${s.price}`,
-          }));
-        setMassagePricing(massageServices);
+        const massageService = services.find((s: any) => s.name === 'Therapeutic Massage');
+
+        if (massageService?.durations && Array.isArray(massageService.durations)) {
+          const pricing = massageService.durations
+            .sort((a: any, b: any) => a.durationMinutes - b.durationMinutes)
+            .map((d: any) => ({
+              duration: `${d.durationMinutes} minutes`,
+              price: `$${d.price}`,
+            }));
+          setMassagePricing(pricing);
+        }
       } catch (error) {
         console.error('Failed to fetch massage pricing:', error);
       }
