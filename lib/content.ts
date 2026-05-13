@@ -107,6 +107,36 @@ export const content = {
     'Anyone building a regular self-care practice',
   ],
 
+  situations: [
+    {
+      id: 'chronic-pain',
+      title: 'Chronic Back or Neck Pain',
+      description:
+        'If you\'ve been to physical therapy, tried chiropractors, attempted every stretch, and the pain persists, you\'re not alone. Chronic pain often signals deep fascial restrictions that standard approaches miss.',
+      howItHelps:
+        'MFR targets the fascial restrictions wrapped around your muscles and nerves. By releasing these restrictions, many people experience relief where other treatments haven\'t worked.',
+      icon: '💪',
+    },
+    {
+      id: 'post-surgery',
+      title: 'Post-Surgery Recovery',
+      description:
+        'After surgery—whether orthopedic, abdominal, or otherwise—your body heals with tightness and scar tissue. This can limit movement and create pain even after clearance from your surgeon.',
+      howItHelps:
+        'Myofascial release helps break up scar tissue adhesions and restore mobility. Many post-surgical patients find MFR accelerates their recovery timeline significantly.',
+      icon: '🏥',
+    },
+    {
+      id: 'fibromyalgia',
+      title: 'Fibromyalgia & Widespread Pain',
+      description:
+        'Widespread, persistent pain affecting multiple areas of your body can feel isolating. Standard treatments often miss the underlying fascial component driving systemic pain.',
+      howItHelps:
+        'MFR addresses the fascial restrictions contributing to fibromyalgia symptoms. Many clients with fibromyalgia experience meaningful relief through gentle, sustained pressure work.',
+      icon: '🌊',
+    },
+  ],
+
   booking: {
     heading: 'Ready to schedule?',
     subheading: 'Contact me to schedule an appointment.',

@@ -80,6 +80,119 @@ export default function MFRPage() {
         </Container>
       </Box>
 
+      {/* Why PT Alone Doesn't Always Work */}
+      <Box sx={{ padding: { xs: '3rem 2rem', md: '5rem 2rem' } }}>
+        <Container maxWidth="lg" sx={{ maxWidth: '900px' }}>
+          <ScrollReveal>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: '1.75rem', md: '2.25rem' },
+                fontWeight: 400,
+                color: brandColors.ink,
+                marginBottom: 2,
+              }}
+            >
+              Why Your Back Still Hurts After PT{' '}
+              <span style={{ color: brandColors.terracotta, fontStyle: 'italic' }}>
+                (And How MFR Helps)
+              </span>
+            </Typography>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: '1.1rem',
+                lineHeight: 2,
+                color: brandColors.inkSoft,
+                marginBottom: 2,
+              }}
+            >
+              You've done the physical therapy. You've stretched. You've strengthened. Yet the pain persists. This is a common experience—and it's not a failure on your part.
+            </Typography>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2}>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: '1.1rem',
+                lineHeight: 2,
+                color: brandColors.inkSoft,
+                marginBottom: 2,
+              }}
+            >
+              Traditional physical therapy often focuses on strengthening muscles. But sometimes, chronic pain isn't about weak muscles—it's about restricted fascia. Fascia is the continuous web of connective tissue that surrounds and supports every structure in your body. When fascia becomes tight and restricted from injury, surgery, stress, or prolonged movement patterns, it can create tension and compression that muscles alone cannot resolve. PT strengthens muscles, but it may not address the underlying fascial restriction causing the pain.
+            </Typography>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.3}>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: '1.1rem',
+                lineHeight: 2,
+                color: brandColors.inkSoft,
+                marginBottom: 3,
+              }}
+            >
+              Myofascial release takes a different approach. Rather than focusing on strengthening, it targets the fascial restrictions themselves. Using gentle, sustained pressure, it allows the fascia to soften and release naturally. Many people find that combining MFR with PT—or turning to MFR after PT—finally addresses the missing piece in their healing journey.
+            </Typography>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.4}>
+            <Box
+              sx={{
+                backgroundColor: `${brandColors.terracotta}10`,
+                padding: '2rem',
+                borderRadius: '12px',
+                border: `2px solid ${brandColors.terracotta}30`,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: '1rem',
+                  lineHeight: 1.8,
+                  color: brandColors.inkSoft,
+                }}
+              >
+                <strong>Curious about the difference?</strong> Check out the FAQ section for answers to{' '}
+                <Box
+                  component="a"
+                  href="/faq#what-is-the-difference-between-mfr-and-regular-massage"
+                  sx={{
+                    color: brandColors.terracotta,
+                    textDecoration: 'underline',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    '&:hover': { color: brandColors.terracottaDeep },
+                  }}
+                >
+                  common questions about myofascial release
+                </Box>
+                . If you're ready to explore how MFR could help, read more about{' '}
+                <Box
+                  component="a"
+                  href="/what-to-expect"
+                  sx={{
+                    color: brandColors.terracotta,
+                    textDecoration: 'underline',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    '&:hover': { color: brandColors.terracottaDeep },
+                  }}
+                >
+                  what to expect in your first session
+                </Box>
+                .
+              </Typography>
+            </Box>
+          </ScrollReveal>
+        </Container>
+      </Box>
+
       {/* Featured Background */}
       <GradientBackground variant="section" height="200px" />
 
@@ -429,6 +542,135 @@ export default function MFRPage() {
               </Typography>
             </Box>
           </ScrollReveal>
+        </Container>
+      </Box>
+
+      {/* Common Questions About MFR */}
+      <Box sx={{ padding: { xs: '3rem 2rem', md: '5rem 2rem' } }}>
+        <Container maxWidth="lg" sx={{ maxWidth: '800px' }}>
+          <ScrollReveal>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: '2rem',
+                fontWeight: 400,
+                color: brandColors.ink,
+                marginBottom: 4,
+                textAlign: 'center',
+              }}
+            >
+              Common Questions About MFR
+            </Typography>
+          </ScrollReveal>
+
+          <Box sx={{ display: 'grid', gap: 3 }}>
+            <ScrollReveal>
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: '1.15rem',
+                    fontWeight: 600,
+                    color: brandColors.ink,
+                    marginBottom: 1,
+                  }}
+                >
+                  Is myofascial release proven to work?
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: '1rem',
+                    lineHeight: 1.8,
+                    color: brandColors.inkSoft,
+                  }}
+                >
+                  The John F. Barnes approach has decades of clinical use and client success. Many people experience meaningful change within a few sessions. That said, myofascial release is different from symptom management—it's about addressing underlying restrictions. Results vary based on how long restrictions have been present and your body's individual response.
+                </Typography>
+              </Box>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.1}>
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: '1.15rem',
+                    fontWeight: 600,
+                    color: brandColors.ink,
+                    marginBottom: 1,
+                  }}
+                >
+                  How many sessions typically produce results?
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: '1rem',
+                    lineHeight: 1.8,
+                    color: brandColors.inkSoft,
+                  }}
+                >
+                  Many people feel noticeable improvement within 4-6 sessions. Some experience meaningful change earlier. For chronic pain or deeply held restrictions, ongoing sessions may be beneficial. We'll create a realistic timeline based on your specific situation after your first session.
+                </Typography>
+              </Box>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: '1.15rem',
+                    fontWeight: 600,
+                    color: brandColors.ink,
+                    marginBottom: 1,
+                  }}
+                >
+                  Can I use MFR alongside physical therapy?
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: '1rem',
+                    lineHeight: 1.8,
+                    color: brandColors.inkSoft,
+                  }}
+                >
+                  Absolutely. Many clients benefit from combining MFR with PT—they work well together. MFR releases the restrictions; PT strengthens the area. If you're currently in PT and not seeing the progress you hoped for, MFR may be the missing piece.
+                </Typography>
+              </Box>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.3}>
+              <Box
+                sx={{
+                  padding: '2rem',
+                  backgroundColor: `${brandColors.moss}08`,
+                  borderRadius: '12px',
+                  marginTop: 2,
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: '1rem',
+                    color: brandColors.inkSoft,
+                    lineHeight: 1.8,
+                  }}
+                >
+                  <strong>Have more questions?</strong> Visit our{' '}
+                  <Box
+                    component="a"
+                    href="/faq"
+                    sx={{
+                      color: brandColors.moss,
+                      textDecoration: 'underline',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      '&:hover': { color: brandColors.mossDeep },
+                    }}
+                  >
+                    complete FAQ page
+                  </Box>
+                  .
+                </Typography>
+              </Box>
+            </ScrollReveal>
+          </Box>
         </Container>
       </Box>
 

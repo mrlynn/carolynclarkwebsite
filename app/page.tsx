@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Container, Typography, Card, CardContent, Button } from '@mui/material';
+import { Box, Container, Typography, Button } from '@mui/material';
 import { HeroSection } from '@/components/HeroSection';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
@@ -8,6 +8,7 @@ import { Navigation } from '@/components/Navigation';
 import { BenefitCard } from '@/components/BenefitCard';
 import { LandingPageServices } from '@/components/LandingPageServices';
 import { ParallaxPhotoSection } from '@/components/ParallaxPhotoSection';
+import { SituationCards } from '@/components/SituationCards';
 import { brandColors } from '@/lib/theme';
 import { content } from '@/lib/content';
 import { FeaturedImage } from '@/components/FeaturedImage';
@@ -158,6 +159,9 @@ export default function Home() {
         titleEmphasis={content.home.experienceParallax.titleEmphasis}
         description={content.home.experienceParallax.description}
       />
+
+      {/* Is This Right For Me - Situation Cards */}
+      <SituationCards situations={content.situations} />
 
       {/* Testimonials Section */}
       <Box
