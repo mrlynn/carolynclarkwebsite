@@ -8,6 +8,9 @@ interface FeaturedImageProps {
   aspectRatio?: number;
   rounded?: boolean;
   shadow?: boolean;
+  /** When true, hints LCP for above-the-fold hero images */
+  priority?: boolean;
+  objectPosition?: string;
 }
 
 export function FeaturedImage({
@@ -16,6 +19,8 @@ export function FeaturedImage({
   aspectRatio = 16 / 9,
   rounded = true,
   shadow = true,
+  priority = false,
+  objectPosition = 'center',
 }: FeaturedImageProps) {
   return (
     <Box
@@ -33,11 +38,12 @@ export function FeaturedImage({
         src={src}
         alt={alt}
         fill
+        sizes="(max-width: 900px) 100vw, 480px"
         style={{
           objectFit: 'cover',
-          objectPosition: 'center',
+          objectPosition,
         }}
-        priority
+        priority={priority}
       />
     </Box>
   );

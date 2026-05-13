@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Box, Container, Typography, Button } from '@mui/material';
 import SpaIcon from '@mui/icons-material/Spa';
 import { brandColors } from '@/lib/theme';
@@ -25,21 +26,82 @@ export function Footer() {
           }}
         >
           <Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, marginBottom: 1 }}>
-              <SpaIcon
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 2,
+                marginBottom: 1,
+                flexWrap: 'wrap',
+              }}
+            >
+              {/* Gold ring as outer circle (not border+clip on one node) — avoids jagged antialiasing */}
+              <Box
                 sx={{
-                  fontSize: '1.8rem',
-                  color: brandColors.gold,
+                  width: 76,
+                  height: 76,
                   flexShrink: 0,
+                  borderRadius: '50%',
+                  backgroundColor: brandColors.gold,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: `0 4px 14px rgba(0,0,0,0.25)`,
                 }}
-              />
-              <Typography variant="h4" sx={{ fontWeight: 600 }}>
-                {content.business.name}
-              </Typography>
+              >
+                <Box
+                  sx={{
+                    position: 'relative',
+                    width: 70,
+                    height: 70,
+                    borderRadius: '50%',
+                    overflow: 'hidden',
+                    transform: 'translateZ(0)',
+                    backfaceVisibility: 'hidden',
+                  }}
+                >
+                  <Image
+                    src="/carolyn.jpeg"
+                    alt="Carolyn Clark"
+                    fill
+                    sizes="76px"
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: 'center 18%',
+                    }}
+                  />
+                </Box>
+              </Box>
+              <Box sx={{ minWidth: 0 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, marginBottom: 0.5 }}>
+                  <SpaIcon
+                    sx={{
+                      fontSize: '1.8rem',
+                      color: brandColors.gold,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <Typography variant="h4" sx={{ fontWeight: 600 }}>
+                    {content.business.name}
+                  </Typography>
+                </Box>
+                <Typography variant="body2" sx={{ color: brandColors.gold }}>
+                  {content.business.tagline}
+                </Typography>
+              </Box>
             </Box>
-            <Typography variant="body2" sx={{ color: brandColors.gold }}>
-              {content.business.tagline}
-            </Typography>
+            <Link href="/about" style={{ color: brandColors.cream, textDecoration: 'none' }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  marginTop: 1,
+                  opacity: 0.9,
+                  '&:hover': { color: brandColors.gold },
+                }}
+              >
+                About Carolyn →
+              </Typography>
+            </Link>
           </Box>
           <Box>
             <Typography variant="h6" sx={{ fontWeight: 600, marginBottom: 1 }}>

@@ -5,7 +5,7 @@ import { brandColors } from '@/lib/theme';
 import { content } from '@/lib/content';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
-import { GradientBackground } from '@/components/GradientBackground';
+import { FeaturedImage } from '@/components/FeaturedImage';
 import { Navigation } from '@/components/Navigation';
 import { ParallaxGradientSection } from '@/components/ParallaxGradientSection';
 
@@ -66,7 +66,21 @@ export default function AboutPage() {
               alignItems: 'center',
             }}
           >
-            <GradientBackground variant="section" height="500px" />
+            <ScrollReveal>
+              <Box
+                sx={{
+                  maxWidth: { xs: 360, md: 440 },
+                  mx: { xs: 'auto', md: 0 },
+                }}
+              >
+                <FeaturedImage
+                  src="/carolyn.jpeg"
+                  alt="Carolyn Clark, licensed massage therapist specializing in John F. Barnes Myofascial Release"
+                  aspectRatio={3 / 4}
+                  objectPosition="center 18%"
+                />
+              </Box>
+            </ScrollReveal>
             <Box>
               <ScrollReveal>
                 <Typography

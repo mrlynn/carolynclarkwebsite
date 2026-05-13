@@ -5,6 +5,7 @@ import { brandColors } from '@/lib/theme';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
 import { Navigation } from '@/components/Navigation';
+import { FeaturedImage } from '@/components/FeaturedImage';
 import { useState, useEffect } from 'react';
 
 declare global {
@@ -179,6 +180,21 @@ export default function ContactPage() {
             {/* Contact Info */}
             <ScrollReveal>
               <Box>
+                <Box
+                  sx={{
+                    maxWidth: 260,
+                    marginBottom: 3,
+                    mx: { xs: 'auto', md: 0 },
+                  }}
+                >
+                  <FeaturedImage
+                    src="/carolyn.jpeg"
+                    alt="Carolyn Clark"
+                    aspectRatio={3 / 4}
+                    objectPosition="center 18%"
+                    shadow={false}
+                  />
+                </Box>
                 <Typography
                   variant="h2"
                   sx={{
@@ -186,6 +202,7 @@ export default function ContactPage() {
                     fontWeight: 400,
                     color: brandColors.ink,
                     marginBottom: 3,
+                    textAlign: { xs: 'center', md: 'left' },
                   }}
                 >
                   Contact Information

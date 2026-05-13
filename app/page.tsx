@@ -10,6 +10,7 @@ import { LandingPageServices } from '@/components/LandingPageServices';
 import { ParallaxPhotoSection } from '@/components/ParallaxPhotoSection';
 import { brandColors } from '@/lib/theme';
 import { content } from '@/lib/content';
+import { FeaturedImage } from '@/components/FeaturedImage';
 
 export default function Home() {
   return (
@@ -51,6 +52,22 @@ export default function Home() {
                     {content.about.homeTitleEmphasis}
                   </span>
                 </Typography>
+              </ScrollReveal>
+              <ScrollReveal delay={0.15}>
+                <Box
+                  sx={{
+                    maxWidth: { xs: 320, sm: 360 },
+                    mx: { xs: 'auto', md: 0 },
+                    marginTop: 1,
+                  }}
+                >
+                  <FeaturedImage
+                    src="/carolyn.jpeg"
+                    alt="Carolyn Clark, licensed massage therapist"
+                    aspectRatio={3 / 4}
+                    objectPosition="center 18%"
+                  />
+                </Box>
               </ScrollReveal>
             </Box>
             <Box>
