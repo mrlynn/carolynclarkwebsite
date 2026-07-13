@@ -23,7 +23,6 @@ import {
   Chip,
 } from '@mui/material';
 import { brandColors } from '@/lib/theme';
-import { format } from 'date-fns';
 
 interface Appointment {
   _id: string;
@@ -230,7 +229,7 @@ export default function AppointmentsPage() {
                   <TableCell sx={{ fontSize: '0.9rem' }}>{appointment.client_phone}</TableCell>
                   <TableCell>{appointment.service_name}</TableCell>
                   <TableCell>
-                    {format(new Date(appointment.scheduled_at), 'MMM d, yyyy h:mm a')}
+                    {new Intl.DateTimeFormat('en-US', { timeZone: 'UTC', month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true }).format(new Date(appointment.scheduled_at))}
                   </TableCell>
                   <TableCell>
                     <Chip

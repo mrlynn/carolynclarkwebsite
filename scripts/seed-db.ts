@@ -47,26 +47,26 @@ async function seedDatabase() {
     // Create services with nested durations array
     const services = [
       {
-        name: 'Myofascial Release',
-        description: 'John F. Barnes Myofascial Release technique for pain relief and lasting change',
+        name: 'John F. Barnes Myofascial Release',
+        description: '',
         category: 'therapy',
         slug: 'myofascial-release',
         status: 'active',
         featured: true,
         durations: [
-          { durationMinutes: 60, price: 140 },
-          { durationMinutes: 90, price: 210 },
+          { durationMinutes: 60, price: 150 },
+          { durationMinutes: 90, price: 225 },
         ],
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Therapeutic Massage',
-        description: 'Therapeutic massage to promote relaxation and healing',
+        description: '',
         category: 'massage',
         slug: 'therapeutic-massage',
         status: 'active',
-        featured: false,
+        featured: true,
         durations: [
           { durationMinutes: 60, price: 120 },
           { durationMinutes: 90, price: 180 },

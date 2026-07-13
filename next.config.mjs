@@ -9,6 +9,12 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: '/faq', destination: '/', permanent: true },
+      { source: '/resources', destination: '/', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

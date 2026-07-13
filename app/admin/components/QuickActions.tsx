@@ -53,7 +53,7 @@ export default function QuickActions({ upcoming }: QuickActionsProps) {
                     </TableCell>
                     <TableCell>
                       <Typography variant="body2">
-                        {new Date(apt.scheduled_at).toLocaleDateString()} {new Date(apt.scheduled_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        {new Date(apt.scheduled_at).toLocaleDateString('en-US', { timeZone: 'UTC' })} {new Date(apt.scheduled_at).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })}
                       </Typography>
                       <Typography variant="caption" sx={{ color: 'text.secondary' }}>
                         {formatDistanceToNow(new Date(apt.scheduled_at), { addSuffix: true })}

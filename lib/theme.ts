@@ -17,16 +17,15 @@ export const inter = Inter({
 });
 
 // Brand tokens — the single source of truth.
-// Change these here and the entire site updates.
-// Updated for Carolyn: BRIGHT, vibrant, warm, therapeutic (not clinical)
+// Earth / plant tones: greens, brown, and tan to match the practice name.
 export const brandColors = {
-  cream: '#fef8f3',           // brighter, warmer white
-  creamDeep: '#f9f0e6',       // warmer secondary background
-  terracotta: '#f5a860',      // BRIGHTER primary accent — vibrant warm gold
-  terracottaDeep: '#e88d48',  // hover state — deeper but still bright
-  moss: '#7fbaa5',            // BRIGHTER sage green — more vibrant, healing
-  mossDeep: '#6ba390',        // hover state — deeper sage
-  gold: '#f5c66f',            // BRIGHTER warm gold — vibrant tertiary accent
+  cream: '#f7f3eb',           // warm tan-cream background
+  creamDeep: '#efe6d6',       // deeper tan secondary background
+  terracotta: '#a67c52',      // warm brown / tan accent (primary)
+  terracottaDeep: '#8b6540',  // deeper brown hover
+  moss: '#5f7d5a',            // earthy plant green
+  mossDeep: '#4a6346',        // deeper green hover
+  gold: '#c4a574',            // soft tan / gold tertiary
   ink: '#2b2420',             // primary text + inverted sections
   inkSoft: '#5a4e45',         // body text on cream
   inkMute: '#8a7d72',         // muted text

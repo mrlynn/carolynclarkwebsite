@@ -140,8 +140,8 @@ export default function PrivacyPage() {
               <Typography variant="body1" sx={{ color: '#666', mb: 2, lineHeight: 1.8 }}>
                 Carolyn Clark<br />
                 Phone/Text: +1 (484) 941-2718<br />
-                Email: carolyn@example.com<br />
-                Location: Kimberton/Phoenixville, PA
+                Email: Carolynclarklmt@gmail.com<br />
+                Location: 999 West Chester Pike, West Chester, PA 19382
               </Typography>
 
               <Typography variant="h5" component="h3" sx={{ mt: 4, mb: 2, fontWeight: 600, color: brandColors.ink }}>

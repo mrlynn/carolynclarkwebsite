@@ -7,14 +7,12 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { Footer } from '@/components/Footer';
 import { FeaturedImage } from '@/components/FeaturedImage';
 import { Navigation } from '@/components/Navigation';
-import { ParallaxGradientSection } from '@/components/ParallaxGradientSection';
 
 export default function AboutPage() {
   return (
     <Box>
       <Navigation />
 
-      {/* Hero */}
       <Box
         sx={{
           backgroundColor: `linear-gradient(135deg, ${brandColors.moss}10 0%, ${brandColors.terracotta}05 100%)`,
@@ -34,7 +32,7 @@ export default function AboutPage() {
             >
               About{' '}
               <span style={{ color: brandColors.moss, fontStyle: 'italic' }}>
-                Carolyn
+                Me
               </span>
             </Typography>
           </ScrollReveal>
@@ -49,13 +47,12 @@ export default function AboutPage() {
                 lineHeight: 1.8,
               }}
             >
-              Licensed Massage Therapist specializing in John F. Barnes Myofascial Release. Based in Kimberton / Phoenixville, PA.
+              {content.about.intro}
             </Typography>
           </ScrollReveal>
         </Container>
       </Box>
 
-      {/* Photo Section */}
       <Box sx={{ padding: { xs: '2rem', md: '4rem 2rem' } }}>
         <Container maxWidth="lg">
           <Box
@@ -84,15 +81,15 @@ export default function AboutPage() {
             <Box>
               <ScrollReveal>
                 <Typography
-                  variant="h2"
+                  variant="body1"
                   sx={{
-                    fontSize: '2rem',
-                    fontWeight: 400,
-                    color: brandColors.ink,
+                    fontSize: '1.1rem',
+                    lineHeight: 2,
+                    color: brandColors.inkSoft,
                     marginBottom: 2,
                   }}
                 >
-                  {content.about.practiceSectionTitle}
+                  {content.about.aboutParagraph1}
                 </Typography>
               </ScrollReveal>
 
@@ -103,23 +100,9 @@ export default function AboutPage() {
                     fontSize: '1.1rem',
                     lineHeight: 2,
                     color: brandColors.inkSoft,
-                    marginBottom: 2,
                   }}
                 >
-                  {content.about.practiceSectionLead}
-                </Typography>
-              </ScrollReveal>
-
-              <ScrollReveal delay={0.2}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: '1.1rem',
-                    lineHeight: 2,
-                    color: brandColors.inkSoft,
-                  }}
-                >
-                  {content.about.practiceSectionClose}
+                  {content.about.aboutParagraph2}
                 </Typography>
               </ScrollReveal>
             </Box>
@@ -127,84 +110,7 @@ export default function AboutPage() {
         </Container>
       </Box>
 
-      {/* Philosophy */}
-      <Box
-        sx={{
-          backgroundColor: brandColors.creamDeep,
-          padding: { xs: '3rem 2rem', md: '5rem 2rem' },
-        }}
-      >
-        <Container maxWidth="lg" sx={{ maxWidth: '800px' }}>
-          <ScrollReveal>
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: '2rem',
-                fontWeight: 400,
-                color: brandColors.ink,
-                marginBottom: 3,
-                textAlign: 'center',
-              }}
-            >
-              A Whole-Person Approach to Care
-            </Typography>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
-            <Typography
-              variant="body1"
-              sx={{
-                fontSize: '1.1rem',
-                lineHeight: 2,
-                color: brandColors.inkSoft,
-                marginBottom: 2,
-              }}
-            >
-              Carolyn works with clients experiencing chronic pain, headaches, TMJ dysfunction, postural tension, and those recovering from injury, surgery, or trauma.
-            </Typography>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.2}>
-            <Typography
-              variant="body1"
-              sx={{
-                fontSize: '1.1rem',
-                lineHeight: 2,
-                color: brandColors.inkSoft,
-                marginBottom: 2,
-              }}
-            >
-              Her approach is rooted in the understanding that the body responds to and carries our lived experiences, and that lasting change comes from addressing the underlying restrictions contributing to pain and dysfunction rather than simply managing symptoms temporarily.
-            </Typography>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.3}>
-            <Typography
-              variant="body1"
-              sx={{
-                fontSize: '1.1rem',
-                lineHeight: 2,
-                color: brandColors.inkSoft,
-              }}
-            >
-              Sessions are individualized and guided by presence, patience, and careful listening to the body to support greater ease, mobility, and connection within the body.
-            </Typography>
-          </ScrollReveal>
-        </Container>
-      </Box>
-
-      {/* Parallax Section */}
-      <ParallaxGradientSection
-        title="Creating a Space for"
-        description="Safe, comfortable, and supportive environment where healing becomes possible."
-      />
-
-      {/* Credentials & Experience */}
-      <Box
-        sx={{
-          padding: { xs: '3rem 2rem', md: '5rem 2rem' },
-        }}
-      >
+      <Box sx={{ padding: { xs: '3rem 2rem', md: '5rem 2rem' } }}>
         <Container maxWidth="lg" sx={{ maxWidth: '800px' }}>
           <ScrollReveal>
             <Typography
@@ -221,34 +127,29 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  gap: 2,
-                  marginBottom: 3,
-                  alignItems: 'flex-start',
-                  borderLeft: `4px solid ${brandColors.terracotta}`,
-                  paddingLeft: 2,
-                }}
-              >
-                <Box>
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      fontSize: '1.25rem',
-                      fontWeight: 600,
-                      color: brandColors.ink,
-                      marginBottom: 0.5,
-                    }}
-                  >
-                    Licensed Massage Therapist
-                  </Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 2,
+                marginBottom: 3,
+                alignItems: 'flex-start',
+                borderLeft: `4px solid ${brandColors.terracotta}`,
+                paddingLeft: 2,
+              }}
+            >
+              <Box>
                 <Typography
-                  variant="body2"
+                  variant="h4"
                   sx={{
-                    color: brandColors.inkSoft,
+                    fontSize: '1.25rem',
+                    fontWeight: 600,
+                    color: brandColors.ink,
+                    marginBottom: 0.5,
                   }}
                 >
+                  Licensed Massage Therapist
+                </Typography>
+                <Typography variant="body2" sx={{ color: brandColors.inkSoft }}>
                   Certified and licensed to practice therapeutic massage in Pennsylvania
                 </Typography>
               </Box>
@@ -256,34 +157,29 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  gap: 2,
-                  marginBottom: 3,
-                  alignItems: 'flex-start',
-                  borderLeft: `4px solid ${brandColors.terracotta}`,
-                  paddingLeft: 2,
-                }}
-              >
-                <Box>
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      fontSize: '1.25rem',
-                      fontWeight: 600,
-                      color: brandColors.ink,
-                      marginBottom: 0.5,
-                    }}
-                  >
-                    John F. Barnes Myofascial Release Trained
-                  </Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 2,
+                marginBottom: 3,
+                alignItems: 'flex-start',
+                borderLeft: `4px solid ${brandColors.terracotta}`,
+                paddingLeft: 2,
+              }}
+            >
+              <Box>
                 <Typography
-                  variant="body2"
+                  variant="h4"
                   sx={{
-                    color: brandColors.inkSoft,
+                    fontSize: '1.25rem',
+                    fontWeight: 600,
+                    color: brandColors.ink,
+                    marginBottom: 0.5,
                   }}
                 >
+                  John F. Barnes Myofascial Release Trained
+                </Typography>
+                <Typography variant="body2" sx={{ color: brandColors.inkSoft }}>
                   Specialized training in the John F. Barnes approach to myofascial release
                 </Typography>
               </Box>
