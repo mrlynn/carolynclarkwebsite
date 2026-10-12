@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer';
 import { Navigation } from '@/components/Navigation';
 import { FeaturedImage } from '@/components/FeaturedImage';
 import { useState, useEffect } from 'react';
+import { content } from '@/lib/content';
 
 declare global {
   interface Window {
@@ -222,7 +223,7 @@ export default function ContactPage() {
                   </Typography>
                   <Typography
                     component="a"
-                    href="tel:+1 (484) 941-2718"
+                    href={`tel:${content.business.phone}`}
                     sx={{
                       fontSize: '1.2rem',
                       color: brandColors.ink,
@@ -233,7 +234,7 @@ export default function ContactPage() {
                       },
                     }}
                   >
-                    +1 (484) 941-2718
+                    {content.business.phone}
                   </Typography>
                 </Box>
 
@@ -251,7 +252,7 @@ export default function ContactPage() {
                   </Typography>
                   <Typography
                     component="a"
-                    href="mailto:carolyn@example.com"
+                    href={`mailto:${content.business.email}`}
                     sx={{
                       fontSize: '1.1rem',
                       color: brandColors.ink,
@@ -262,7 +263,7 @@ export default function ContactPage() {
                       },
                     }}
                   >
-                    carolyn@example.com
+                    {content.business.email}
                   </Typography>
                 </Box>
 
@@ -285,7 +286,7 @@ export default function ContactPage() {
                       lineHeight: 1.8,
                     }}
                   >
-                    Kimberton / Phoenixville, PA
+                    {content.business.location}
                   </Typography>
                 </Box>
 

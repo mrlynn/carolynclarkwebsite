@@ -1,13 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Box, Container, Typography, Button } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 import { content } from '@/lib/content';
 import { useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { AnimatedHeroBackground } from './AnimatedHeroBackground';
-import { AnimatedTitle } from './AnimatedTitle';
 
 export function HeroSection() {
   const ref = useRef(null);
@@ -27,20 +26,29 @@ export function HeroSection() {
         background: brandColors.cream,
       }}
     >
-      {/* Animated background */}
       <AnimatedHeroBackground />
 
-      {/* Content */}
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10 }}>
         <motion.div style={{ y: contentY, opacity: contentOpacity }}>
-          <Box sx={{ marginBottom: 3 }}>
-            <AnimatedTitle
-              text={content.hero.headline}
-              highlightStart={12}
-              highlightEnd={16}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
               variant="h1"
-            />
-          </Box>
+              sx={{
+                fontSize: { xs: '2.75rem', md: '4.5rem' },
+                fontWeight: 400,
+                color: brandColors.ink,
+                marginBottom: 2,
+                maxWidth: '900px',
+                lineHeight: 1.1,
+              }}
+            >
+              {content.hero.headline}
+            </Typography>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -83,79 +91,9 @@ export function HeroSection() {
               {content.hero.body}
             </Typography>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
-          >
-            <Button
-              variant="contained"
-              size="large"
-              href="/booking/service"
-              sx={{
-                backgroundColor: brandColors.terracotta,
-                color: brandColors.cream,
-                padding: '16px 40px',
-                fontSize: '1rem',
-                fontWeight: 600,
-                textTransform: 'none',
-                borderRadius: '999px',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                boxShadow: `0 8px 24px rgba(232, 148, 79, 0.25)`,
-                '&:hover': {
-                  backgroundColor: brandColors.terracottaDeep,
-                  transform: 'translateY(-4px)',
-                  boxShadow: `0 16px 40px rgba(232, 148, 79, 0.35)`,
-                },
-              }}
-            >
-              {content.hero.ctaPrimary}
-            </Button>
-
-            <motion.div
-              animate={{
-                scale: [1, 1.05, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-              }}
-            >
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  padding: '12px 20px',
-                  borderRadius: '999px',
-                  border: `2px solid ${brandColors.moss}`,
-                  background: `${brandColors.moss}08`,
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    background: `${brandColors.moss}15`,
-                    borderColor: brandColors.mossDeep,
-                  },
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: brandColors.moss,
-                    fontWeight: 600,
-                  }}
-                >
-                  {content.hero.credentialChip}
-                </Typography>
-              </Box>
-            </motion.div>
-          </motion.div>
         </motion.div>
       </Container>
 
-      {/* Scroll indicator */}
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}

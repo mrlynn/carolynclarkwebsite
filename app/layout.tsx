@@ -7,7 +7,7 @@ import { MobilePhoneBar } from '@/components/MobilePhoneBar';
 
 export const metadata = {
   title: 'Carolyn Clark | Myofascial Release & Therapeutic Massage',
-  description: 'Licensed massage therapist specializing in John F. Barnes Myofascial Release in Phoenixville, PA.',
+  description: 'Licensed massage therapist specializing in John F. Barnes Myofascial Release in West Chester, PA.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

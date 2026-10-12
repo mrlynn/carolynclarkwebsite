@@ -38,12 +38,14 @@ export function getConfirmationEmailTemplate(data: ConfirmationEmailData): strin
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   });
 
   const appointmentTime = data.scheduledAt.toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: true,
+    timeZone: 'UTC',
   });
 
   return `
@@ -107,6 +109,7 @@ export function getReminderEmailTemplate(data: ReminderEmailData): string {
     hour: '2-digit',
     minute: '2-digit',
     hour12: true,
+    timeZone: 'UTC',
   });
 
   return `
@@ -159,6 +162,7 @@ export function getCancellationEmailTemplate(data: CancellationEmailData): strin
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   });
 
   return `
@@ -211,12 +215,14 @@ export function getAdminNotificationTemplate(data: AdminNotificationData): strin
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   });
 
   const appointmentTime = data.scheduledAt.toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: true,
+    timeZone: 'UTC',
   });
 
   return `

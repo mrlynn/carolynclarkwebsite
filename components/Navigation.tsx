@@ -26,6 +26,7 @@ import Link from 'next/link';
 const topLevelLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
+  { label: 'What to Expect', href: '/what-to-expect' },
 ] as const;
 
 const serviceItems = [
@@ -33,13 +34,7 @@ const serviceItems = [
   { label: 'Therapeutic Massage', href: '/massage' },
 ] as const;
 
-const visitItems = [
-  { label: 'What to Expect', href: '/what-to-expect' },
-  { label: 'FAQ', href: '/faq' },
-] as const;
-
 const tailLinks = [
-  { label: 'Resources', href: '/resources' },
   { label: 'Contact', href: '/contact' },
 ] as const;
 
@@ -280,7 +275,6 @@ export function Navigation() {
               <DesktopNavLink key={link.href} href={link.href} label={link.label} />
             ))}
             <DesktopNavGroup title="Services" items={serviceItems} menuId="nav-services" />
-            <DesktopNavGroup title="Your visit" items={visitItems} menuId="nav-visit" />
             {tailLinks.map((link) => (
               <DesktopNavLink key={link.href} href={link.href} label={link.label} />
             ))}
@@ -396,33 +390,6 @@ export function Navigation() {
             Services
           </ListSubheader>
           {serviceItems.map((link) => (
-            <ListItemButton
-              key={link.href}
-              component={Link}
-              href={link.href}
-              onClick={closeDrawer}
-              sx={{
-                py: 1.5,
-                px: 2,
-                minHeight: 48,
-                pl: 3,
-                '&:hover': { backgroundColor: `${brandColors.terracotta}12` },
-              }}
-            >
-              <ListItemText
-                primary={
-                  <Typography sx={{ fontSize: '1rem', color: brandColors.ink, fontWeight: 500 }}>
-                    {link.label}
-                  </Typography>
-                }
-              />
-            </ListItemButton>
-          ))}
-
-          <ListSubheader disableSticky sx={subheaderSx}>
-            Your visit
-          </ListSubheader>
-          {visitItems.map((link) => (
             <ListItemButton
               key={link.href}
               component={Link}

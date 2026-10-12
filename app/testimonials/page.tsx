@@ -70,7 +70,7 @@ export default function TestimonialsPage() {
                 fontSize: { xs: '2rem', md: '2.5rem' },
               }}
             >
-              What Our Clients Say
+              What Clients Say
             </Typography>
             <Typography
               variant="body1"
@@ -81,7 +81,7 @@ export default function TestimonialsPage() {
                 mb: 4,
               }}
             >
-              {content.home.testimonialsIntro}
+              {content.testimonials.intro}
             </Typography>
             <Button
               variant="contained"

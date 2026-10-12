@@ -106,10 +106,6 @@ export function LandingPageServices() {
         >
           {services.map((service, idx) => {
             const accentColor = colors[idx % colors.length];
-            const minPrice = Math.min(...service.durations.map((d) => d.price));
-            const maxPrice = Math.max(...service.durations.map((d) => d.price));
-            const priceDisplay =
-              minPrice === maxPrice ? `$${minPrice}` : `$${minPrice} - $${maxPrice}`;
 
             return (
               <ScrollReveal key={service._id} delay={0.1 + idx * 0.1}>
@@ -140,34 +136,9 @@ export function LandingPageServices() {
                       {service.name}
                     </Typography>
 
-                    {idx === 0 && (
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: accentColor,
-                          fontWeight: 600,
-                          marginBottom: 2,
-                        }}
-                      >
-                        FEATURED OFFERING
-                      </Typography>
-                    )}
-
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: brandColors.inkSoft,
-                        lineHeight: 1.8,
-                        marginBottom: 2,
-                        flex: 1,
-                      }}
-                    >
-                      {service.description}
-                    </Typography>
-
-                    <Box sx={{ marginBottom: 2 }}>
+                    <Box sx={{ marginTop: 2, marginBottom: 1, flex: 1 }}>
                       {service.durations.map((duration, dIdx) => (
-                        <Typography key={dIdx} variant="body2" sx={{ marginBottom: 0.5, color: brandColors.inkSoft }}>
+                        <Typography key={dIdx} variant="body1" sx={{ marginBottom: 0.75, color: brandColors.inkSoft }}>
                           {duration.durationMinutes} min:{' '}
                           <strong style={{ color: brandColors.ink }}>${duration.price}</strong>
                         </Typography>
@@ -175,11 +146,15 @@ export function LandingPageServices() {
                     </Box>
 
                     <Button
-                      variant="contained"
-                      href="/booking/service"
+                      variant="outlined"
+                      href={
+                        service.slug === 'therapeutic-massage' || service.category === 'massage'
+                          ? '/massage'
+                          : '/mfr'
+                      }
                       sx={{
-                        backgroundColor: accentColor,
-                        color: brandColors.cream,
+                        borderColor: accentColor,
+                        color: accentColor,
                         padding: '10px 24px',
                         fontSize: '0.95rem',
                         fontWeight: 600,
@@ -187,15 +162,14 @@ export function LandingPageServices() {
                         borderRadius: '999px',
                         transition: 'all 0.3s ease',
                         '&:hover': {
-                          backgroundColor: accentColor,
-                          transform: 'translateY(-2px)',
-                          boxShadow: `0 8px 16px ${accentColor}40`,
+                          backgroundColor: `${accentColor}14`,
+                          borderColor: accentColor,
                         },
                         alignSelf: 'flex-start',
                         marginTop: 'auto',
                       }}
                     >
-                      Book Now
+                      Learn More
                     </Button>
                   </CardContent>
                 </Card>

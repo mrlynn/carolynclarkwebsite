@@ -110,7 +110,7 @@ export async function DELETE(
     <div class="header">
       <h2>Appointment Cancelled</h2>
     </div>
-    <p><strong>${appointment.client_name}</strong> cancelled their appointment for <strong>${service?.name}</strong> on <strong>${appointment.scheduled_at.toLocaleDateString()}</strong>.</p>
+    <p><strong>${appointment.client_name}</strong> cancelled their appointment for <strong>${service?.name}</strong> on <strong>${appointment.scheduled_at.toLocaleDateString('en-US', { timeZone: 'UTC' })}</strong>.</p>
     <p>This time slot is now available for rebooking.</p>
   </div>
 </body>

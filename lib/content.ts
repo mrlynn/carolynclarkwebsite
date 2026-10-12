@@ -3,38 +3,34 @@ export const content = {
     name: 'Carolyn Clark',
     tagline: 'Myofascial Release & Therapeutic Massage',
     phone: '+1 (484) 941-2718',
-    email: 'carolyn@example.com',
-    location: 'Kimberton / Phoenixville, PA',
+    email: 'Carolynclarklmt@gmail.com',
+    location: '999 West Chester Pike, West Chester, PA 19382',
   },
 
   hero: {
-    headline: 'Healing that goes deeper',
+    headline: 'Welcome',
     subheadingBeforeAccent: 'John F. Barnes Myofascial Release & ',
     subheadingAccent: 'Therapeutic Massage',
     body:
-      'Carolyn Clark is a Licensed Massage Therapist specializing in the John F. Barnes Myofascial Release Approach. Her work is rooted in a whole-person approach that recognizes the connection between the physical and emotional aspects of the body. Through individualized, hands-on care, she helps clients address pain, tension, and restriction rather than simply managing symptoms.',
-    ctaPrimary: 'Book a Session',
-    credentialChip: 'Licensed Massage Therapist • By appointment',
+      "I'm a Licensed Massage Therapist specializing in the John F. Barnes Myofascial Release Approach. My work is rooted in a whole-person philosophy, recognizing the connection between the body, mind, and emotions. Through individualized, hands-on care, I help clients reduce pain, increase mobility and address the underlying patterns contributing to their symptoms—not just the symptoms themselves.",
   },
 
   about: {
     /** Home page “about” band */
-    homeTitle: 'A whole-person approach',
-    homeTitleEmphasis: 'to care',
+    homeTitle: 'Welcome',
+    homeTitleEmphasis: '',
     homeIntro:
-      'Carolyn works with clients experiencing chronic pain, headaches, TMJ dysfunction, postural tension, and those recovering from injury, surgery, or trauma.',
+      'I work with clients experiencing chronic pain, migraines, TMJ dysfunction, and those recovering from injury, surgery or trauma.',
     homePhilosophy:
-      'Her approach is rooted in the understanding that the body responds to and carries our lived experiences, and that lasting change comes from addressing the underlying restrictions contributing to pain and dysfunction rather than simply managing symptoms temporarily.',
-    homeSessions:
-      'Sessions are individualized and guided by presence, patience, and careful listening to the body to support greater ease, mobility, and connection within the body.',
-    /** About page — photo / intro band (aligned with practice, not generic “wellness” framing) */
-    practiceSectionTitle: 'Focused, patient-centered sessions',
-    practiceSectionLead:
-      'Treatment plans are built from your history, goals, and how your body responds in the moment. There is time to discuss what you are experiencing and what you hope to change.',
-    practiceSectionClose:
-      'Hands-on work is paced for your nervous system. When appropriate, you may receive suggestions for movement or self-care to support progress between visits.',
+      "I believe our bodies tell a story. Injury, surgery, stress, and even emotional experiences can create restrictions within the fascial system that contribute to pain and dysfunction. The John F. Barnes Myofascial Release Approach focuses on gently releasing these restrictions to support your body's natural ability to return to balance.",
+    homeSessions: '',
+    /** About page */
+    aboutParagraph1:
+      'My passion for this work began through my own experience as a client. The sense of connection with myself I found through John F. Barnes Myofascial Release inspired me to become a therapist and share this work with my community. I strive to create a welcoming, compassionate space where people feel safe to be themselves. I believe healing begins when we feel truly heard and supported, and I consider it a privilege to walk alongside each client on their unique journey.',
+    aboutParagraph2:
+      'My goal is to help clients experience greater ease, freedom, and connection within their bodies so they can move through life with less pain and more joy! I also believe in empowering clients with the tools and awareness to continue their healing outside of the treatment room.',
     intro:
-      'Licensed Massage Therapist specializing in John F. Barnes Myofascial Release. Based in Kimberton / Phoenixville, PA.',
+      'Licensed Massage Therapist specializing in John F. Barnes Myofascial Release. Based in West Chester, PA.',
     credentials:
       'Licensed Massage Therapist specializing in John F. Barnes Myofascial Release.',
   },
@@ -42,27 +38,22 @@ export const content = {
   services: {
     featured: {
       title: 'John F. Barnes Myofascial Release',
-      /** Service-page hero deck — first sentences of Carolyn’s approved MFR copy */
-      heroLead:
-        "Fascia is a continuous web of connective tissue that surrounds and supports every muscle, bone, nerve, blood vessel, and organ in the body. It acts as the body's protective support system and responds during times of injury, surgery, inflammation, stress, or emotional trauma.",
-      /** Short teaser for home cards — drawn from Carolyn’s approved MFR copy */
-      cardSummary:
-        'Fascia is a continuous web of connective tissue that surrounds and supports every muscle, bone, nerve, blood vessel, and organ in the body. The John F. Barnes Myofascial Release Approach uses gentle, sustained pressure to engage the fascial system and allow restricted tissue to soften and release naturally, without force.',
+      understandingFascia:
+        'Fascia is the body\'s continuous, three-dimensional web of connective tissue. It surrounds and permeates every muscle, bone, nerve, blood vessel, organ, and cell, creating one interconnected system from head to toe. Healthy fascia is fluid and flexible, allowing the body to move freely. Following injury, surgery, inflammation, repetitive strain, or emotional trauma, fascia can become restricted, creating tension that may spread throughout the body. Because this web is continuous, the source of pain is often different from where symptoms are felt. Myofascial Release gently addresses these restrictions, restoring mobility, reducing compression, and allowing the body to return toward balance.',
+      howItWorks: [
+        'The John F. Barnes Myofascial Release Approach uses gentle, sustained pressure to engage the fascial system, allowing restrictions to soften and release naturally. Rather than forcing tissue, the therapist follows the body\'s direction, giving the fascia the time it needs to unwind and restore balance.',
+        'By treating the body as one interconnected system, Myofascial Release addresses the underlying source of restriction rather than simply chasing symptoms. As compression is reduced and mobility is restored, many people experience decreased pain, improved movement, and greater ease throughout their body.',
+        'This whole-person approach recognizes the close relationship between the body, mind, and emotions, creating space for the body\'s innate healing mechanisms to emerge.',
+      ],
       pricing: [
-        { duration: '60 minutes', price: '$140' },
-        { duration: '90 minutes', price: '$210' },
+        { duration: '60 minutes', price: '$150' },
+        { duration: '90 minutes', price: '$225' },
       ],
     },
     secondary: {
       title: 'Therapeutic Massage',
-      heroLead:
-        'Sessions combine focused hands-on techniques for pain relief, mobility, and relaxation — individualized to what you need when you come in.',
-      whoBenefitsBody:
-        'Therapeutic massage can support muscle tension, everyday stress, and physical discomfort from activity or desk work. Many people use it to recover after demanding weeks or to stay comfortable when tension tends to build.',
-      parallaxBlurb:
-        'Hands-on work tailored to how you feel the day you arrive — for relief, mobility, and rest.',
-      cardSummary:
-        "Therapeutic massage sessions are individualized to each client's needs and may include a combination of deep tissue work, myofascial release, Swedish massage, assisted stretching, trigger point therapy and energy work to relieve pain and tension, increase mobility and promote overall relaxation and well-being.",
+      aboutBody:
+        'Whether you\'re looking to relieve muscle tension, reduce pain, improve mobility, or simply unwind, each session is tailored to your individual needs. Drawing from a variety of techniques—including deep tissue massage, Swedish massage, assisted stretching, trigger point therapy, and energy work—every treatment is thoughtfully customized to help you feel your best.',
       pricing: [
         { duration: '60 minutes', price: '$120' },
         { duration: '90 minutes', price: '$180' },
@@ -70,79 +61,25 @@ export const content = {
     },
   },
 
-  home: {
-    whyMfrCards: [
-      {
-        title: 'Restriction-focused care',
-        description: 'Work targets underlying fascial restrictions, not only surface symptoms.',
-        accent: 'terracotta' as const,
-      },
-      {
-        title: 'Gentle, sustained pressure',
-        description: 'Pressure is applied without forcing tissue; the body sets the pace.',
-        accent: 'moss' as const,
-      },
-      {
-        title: 'Progress between sessions',
-        description: 'Education and home care can support what you build in the treatment room.',
-        accent: 'gold' as const,
-      },
-    ],
-    experienceParallax: {
-      title: 'The treatment',
-      titleEmphasis: 'space',
-      description:
-        'A quiet, comfortable setting for hands-on work. Sessions are unhurried so there is room to listen to how your body responds.',
-    },
-    testimonialsIntro:
-      'Read what clients say about Myofascial Release and therapeutic massage.',
+  whatToExpect: {
+    pageTitle: 'A guide to your first session',
+    arriveEarly:
+      'Please arrive 5–10 minutes early so we have time to settle in before your session begins.',
+    preparingTitle: 'Preparing for your session',
+    preparingBody:
+      'Wear loose athletic shorts and either a sports bra or loose tank top. Please avoid applying lotion or oils to the skin beforehand, as myofascial release is performed directly on the skin without glide or slippage.',
   },
-
-  clientTypes: [
-    'People with chronic pain seeking lasting relief',
-    'Post-surgery and post-injury recovery',
-    'Trauma recovery and nervous system regulation',
-    'Stressed professionals seeking deep relaxation',
-    'Athletes and active individuals',
-    'Anyone building a regular self-care practice',
-  ],
-
-  situations: [
-    {
-      id: 'chronic-pain',
-      title: 'Chronic Back or Neck Pain',
-      description:
-        'If you\'ve been to physical therapy, tried chiropractors, attempted every stretch, and the pain persists, you\'re not alone. Chronic pain often signals deep fascial restrictions that standard approaches miss.',
-      howItHelps:
-        'MFR targets the fascial restrictions wrapped around your muscles and nerves. By releasing these restrictions, many people experience relief where other treatments haven\'t worked.',
-      icon: '💪',
-    },
-    {
-      id: 'post-surgery',
-      title: 'Post-Surgery Recovery',
-      description:
-        'After surgery—whether orthopedic, abdominal, or otherwise—your body heals with tightness and scar tissue. This can limit movement and create pain even after clearance from your surgeon.',
-      howItHelps:
-        'Myofascial release helps break up scar tissue adhesions and restore mobility. Many post-surgical patients find MFR accelerates their recovery timeline significantly.',
-      icon: '🏥',
-    },
-    {
-      id: 'fibromyalgia',
-      title: 'Fibromyalgia & Widespread Pain',
-      description:
-        'Widespread, persistent pain affecting multiple areas of your body can feel isolating. Standard treatments often miss the underlying fascial component driving systemic pain.',
-      howItHelps:
-        'MFR addresses the fascial restrictions contributing to fibromyalgia symptoms. Many clients with fibromyalgia experience meaningful relief through gentle, sustained pressure work.',
-      icon: '🌊',
-    },
-  ],
 
   booking: {
     heading: 'Ready to schedule?',
     subheading: 'Contact me to schedule an appointment.',
     phone: '+1 (484) 941-2718',
-    email: 'carolyn@example.com',
+    email: 'Carolynclarklmt@gmail.com',
     hours: 'By appointment',
-    note: 'Schedule is in transition. Call or text for current availability.',
+    note: 'Call, text, or book online for current availability.',
+  },
+
+  testimonials: {
+    intro: 'Read what clients say about Myofascial Release and therapeutic massage.',
   },
 };

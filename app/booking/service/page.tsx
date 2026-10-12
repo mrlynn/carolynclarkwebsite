@@ -10,6 +10,7 @@ import {
   Typography,
   CircularProgress,
   Alert,
+  Chip,
 } from '@mui/material';
 import { brandColors } from '@/lib/theme';
 
@@ -26,20 +27,32 @@ interface Service {
   status: 'active' | 'inactive';
 }
 
-interface ServiceOption {
+interface SelectionState {
   serviceId: string;
-  serviceName: string;
-  description: string;
   durationMinutes: number;
-  price: number;
 }
+
+const getBenefitForDuration = (serviceName: string, duration: number): string => {
+  if (duration === 60) {
+    return serviceName === 'Myofascial Release'
+      ? 'Quick reset for targeted areas'
+      : 'Perfect for maintenance and relaxation';
+  }
+  return serviceName === 'Myofascial Release'
+    ? 'Deep work + home care guidance for lasting results'
+    : 'Complete relaxation with integrated techniques';
+};
+
+const getPerMinutePrice = (price: number, duration: number): number => {
+  return Math.round((price / duration) * 100) / 100;
+};
 
 export default function ServiceSelectionPage() {
   const router = useRouter();
-  const [serviceOptions, setServiceOptions] = useState<ServiceOption[]>([]);
+  const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [selected, setSelected] = useState<SelectionState | null>(null);
 
   useEffect(() => {
     fetchServices();
@@ -50,22 +63,16 @@ export default function ServiceSelectionPage() {
       const response = await fetch('/api/services?status=active');
       if (!response.ok) throw new Error('Failed to fetch services');
       const data = await response.json();
+      setServices(data);
 
-      // Flatten services: one card per duration option
-      const options: ServiceOption[] = [];
-      data.forEach((service: Service) => {
-        service.durations.forEach((duration) => {
-          options.push({
-            serviceId: service._id,
-            serviceName: service.name,
-            description: service.description,
-            durationMinutes: duration.durationMinutes,
-            price: duration.price,
-          });
+      // Pre-select the recommended option: 90-min MFR
+      const mfrService = data.find((s: Service) => s.name === 'Myofascial Release');
+      if (mfrService) {
+        setSelected({
+          serviceId: mfrService._id,
+          durationMinutes: 90,
         });
-      });
-
-      setServiceOptions(options);
+      }
     } catch (err) {
       setError('Failed to load services');
       console.error(err);
@@ -74,11 +81,14 @@ export default function ServiceSelectionPage() {
     }
   };
 
-  const handleSelectService = (option: ServiceOption) => {
-    setSelectedService(option.serviceId);
-    // Store selected service in session storage for next page
-    sessionStorage.setItem('selectedServiceId', option.serviceId);
-    sessionStorage.setItem('selectedDurationMinutes', option.durationMinutes.toString());
+  const handleSelectDuration = (serviceId: string, durationMinutes: number) => {
+    setSelected({ serviceId, durationMinutes });
+  };
+
+  const handleContinue = () => {
+    if (!selected) return;
+    sessionStorage.setItem('selectedServiceId', selected.serviceId);
+    sessionStorage.setItem('selectedDurationMinutes', selected.durationMinutes.toString());
     router.push('/booking/calendar');
   };
 
@@ -92,84 +102,219 @@ export default function ServiceSelectionPage() {
 
   return (
     <Box>
-      <Typography variant="h6" sx={{ marginBottom: 3, color: brandColors.ink }}>
+      <Typography
+        variant="h5"
+        sx={{
+          marginBottom: 4,
+          color: brandColors.ink,
+          fontWeight: 400,
+          fontSize: { xs: '1.75rem', md: '2rem' },
+        }}
+      >
         What service would you like to book?
       </Typography>
 
       {error && (
-        <Alert severity="error" sx={{ marginBottom: 2 }}>
+        <Alert severity="error" sx={{ marginBottom: 3 }}>
           {error}
         </Alert>
       )}
 
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 3 }}>
-        {serviceOptions.map((option, idx) => (
-          <Card
-            key={`${option.serviceId}-${option.durationMinutes}-${idx}`}
-            sx={{
-              cursor: 'pointer',
-              border: selectedService === option.serviceId ? `2px solid ${brandColors.terracotta}` : '1px solid #e0e0e0',
-              backgroundColor: selectedService === option.serviceId ? `${brandColors.terracotta}10` : 'white',
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                transform: 'translateY(-2px)',
-              },
-            }}
-            onClick={() => handleSelectService(option)}
-          >
-            <CardContent>
-              <Typography variant="h6" sx={{ marginBottom: 1, color: brandColors.ink, fontWeight: 600 }}>
-                {option.serviceName}
-              </Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+        {services.map((service) => (
+          <Box key={service._id}>
+            {/* Service Title */}
+            <Typography
+              variant="h6"
+              sx={{
+                marginBottom: 3,
+                color: brandColors.ink,
+                fontWeight: 600,
+                fontSize: '1.25rem',
+              }}
+            >
+              {service.name}
+            </Typography>
 
-              <Typography variant="body2" sx={{ marginBottom: 2, color: brandColors.inkSoft }}>
-                {option.description}
-              </Typography>
+            {/* Service Description */}
+            <Typography
+              variant="body2"
+              sx={{
+                marginBottom: 3,
+                color: brandColors.inkSoft,
+                lineHeight: 1.7,
+                maxWidth: '600px',
+              }}
+            >
+              {service.description}
+            </Typography>
 
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Box>
-                  <Typography variant="caption" sx={{ color: brandColors.inkSoft, display: 'block' }}>
-                    Duration
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: brandColors.ink, fontWeight: 600 }}>
-                    {option.durationMinutes} minutes
-                  </Typography>
-                </Box>
+            {/* Duration Options Grid */}
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 3 }}>
+              {service.durations
+                .sort((a, b) => a.durationMinutes - b.durationMinutes)
+                .map((duration) => {
+                  const isSelected =
+                    selected?.serviceId === service._id &&
+                    selected?.durationMinutes === duration.durationMinutes;
+                  const isRecommended = duration.durationMinutes === 90;
+                  const perMinutePrice = getPerMinutePrice(duration.price, duration.durationMinutes);
+                  const benefit = getBenefitForDuration(service.name, duration.durationMinutes);
 
-                <Box sx={{ textAlign: 'right' }}>
-                  <Typography variant="caption" sx={{ color: brandColors.inkSoft, display: 'block' }}>
-                    Price
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ color: brandColors.terracotta, fontWeight: 600 }}
-                  >
-                    ${option.price}
-                  </Typography>
-                </Box>
-              </Box>
+                  return (
+                    <Card
+                      key={duration.durationMinutes}
+                      onClick={() => handleSelectDuration(service._id, duration.durationMinutes)}
+                      sx={{
+                        cursor: 'pointer',
+                        position: 'relative',
+                        overflow: 'visible',
+                        border: isSelected
+                          ? `3px solid ${brandColors.terracotta}`
+                          : `1px solid ${brandColors.creamDeep}`,
+                        backgroundColor: isSelected ? `${brandColors.terracotta}08` : brandColors.cream,
+                        transition: 'all 0.25s ease',
+                        '&:hover': {
+                          borderColor: brandColors.terracotta,
+                          boxShadow: `0 8px 24px ${brandColors.terracotta}15`,
+                          transform: 'translateY(-4px)',
+                        },
+                      }}
+                    >
+                      {/* Recommended Badge */}
+                      {isRecommended && (
+                        <Box
+                          sx={{
+                            position: 'absolute',
+                            top: -12,
+                            right: 16,
+                          }}
+                        >
+                          <Chip
+                            label="Recommended"
+                            size="small"
+                            sx={{
+                              backgroundColor: brandColors.terracotta,
+                              color: 'white',
+                              fontWeight: 600,
+                              fontSize: '0.75rem',
+                              height: 24,
+                            }}
+                          />
+                        </Box>
+                      )}
 
-              {selectedService === option.serviceId && (
-                <Button
-                  fullWidth
-                  variant="contained"
-                  sx={{
-                    marginTop: 2,
-                    backgroundColor: brandColors.terracotta,
-                    color: brandColors.cream,
-                    textTransform: 'none',
-                  }}
-                >
-                  Selected ✓
-                </Button>
-              )}
-            </CardContent>
-          </Card>
+                      <CardContent sx={{ padding: 3 }}>
+                        {/* Duration & Price Header */}
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'flex-start',
+                            marginBottom: 2,
+                          }}
+                        >
+                          <Box>
+                            <Typography
+                              sx={{
+                                fontSize: '1.1rem',
+                                fontWeight: 600,
+                                color: brandColors.ink,
+                              }}
+                            >
+                              {duration.durationMinutes} minutes
+                            </Typography>
+                            <Typography
+                              sx={{
+                                fontSize: '0.85rem',
+                                color: brandColors.inkMute,
+                                marginTop: 0.5,
+                              }}
+                            >
+                              ${perMinutePrice}/min
+                            </Typography>
+                          </Box>
+                          <Box sx={{ textAlign: 'right' }}>
+                            <Typography
+                              sx={{
+                                fontSize: '1.5rem',
+                                fontWeight: 600,
+                                color: brandColors.terracotta,
+                              }}
+                            >
+                              ${duration.price}
+                            </Typography>
+                          </Box>
+                        </Box>
+
+                        {/* Benefit Statement */}
+                        <Box
+                          sx={{
+                            padding: '12px 0',
+                            borderTop: `1px solid ${brandColors.creamDeep}`,
+                            borderBottom: `1px solid ${brandColors.creamDeep}`,
+                            marginBottom: 2,
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              fontSize: '0.95rem',
+                              color: brandColors.inkSoft,
+                              fontStyle: 'italic',
+                              lineHeight: 1.5,
+                            }}
+                          >
+                            {benefit}
+                          </Typography>
+                        </Box>
+
+                        {/* Selection Indicator */}
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            height: 32,
+                            borderRadius: 1,
+                            backgroundColor: isSelected ? `${brandColors.terracotta}20` : 'transparent',
+                            border: isSelected ? `2px solid ${brandColors.terracotta}` : '2px solid transparent',
+                            transition: 'all 0.25s ease',
+                          }}
+                        >
+                          {isSelected && (
+                            <Typography
+                              sx={{
+                                color: brandColors.terracotta,
+                                fontWeight: 600,
+                                fontSize: '0.9rem',
+                              }}
+                            >
+                              ✓ Selected
+                            </Typography>
+                          )}
+                        </Box>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+            </Box>
+
+            {/* Divider between services */}
+            {service !== services[services.length - 1] && (
+              <Box
+                sx={{
+                  marginTop: 5,
+                  paddingTop: 5,
+                  borderTop: `1px solid ${brandColors.creamDeep}`,
+                }}
+              />
+            )}
+          </Box>
         ))}
       </Box>
 
-      <Box sx={{ marginTop: 4, display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
+      {/* Action Buttons */}
+      <Box sx={{ marginTop: 6, display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
         <Button
           variant="outlined"
           onClick={() => router.push('/')}
@@ -177,20 +322,24 @@ export default function ServiceSelectionPage() {
             borderColor: brandColors.moss,
             color: brandColors.moss,
             textTransform: 'none',
+            fontWeight: 500,
           }}
         >
           Cancel
         </Button>
         <Button
           variant="contained"
-          disabled={!selectedService}
-          onClick={() => router.push('/booking/calendar')}
+          disabled={!selected}
+          onClick={handleContinue}
           sx={{
             backgroundColor: brandColors.terracotta,
             color: brandColors.cream,
             textTransform: 'none',
+            fontWeight: 600,
+            paddingX: 4,
             '&:disabled': {
-              backgroundColor: '#ccc',
+              backgroundColor: brandColors.inkMute,
+              color: brandColors.cream,
             },
           }}
         >
