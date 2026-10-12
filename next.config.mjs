@@ -10,9 +10,11 @@ const nextConfig = {
     ],
   },
   async redirects() {
+    // Site retired: permanently redirect all traffic to Carolyn's new site.
+    const NEW_SITE = 'https://www.trilliumtherapeuticarts.com';
     return [
-      { source: '/faq', destination: '/', permanent: true },
-      { source: '/resources', destination: '/', permanent: true },
+      { source: '/about', destination: `${NEW_SITE}/about`, permanent: true },
+      { source: '/:path*', destination: `${NEW_SITE}/`, permanent: true },
     ];
   },
 };
